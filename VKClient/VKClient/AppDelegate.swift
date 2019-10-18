@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  VKClient
 //
-//  Created by Пазин Даниил on 17.10.2019.
+//  Created by Пазин Даниил on 18.10.2019.
 //  Copyright © 2019 Пазин Даниил. All rights reserved.
 //
 
