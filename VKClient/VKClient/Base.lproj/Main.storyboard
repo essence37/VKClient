@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,82 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VKClient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOg-ig-Wls">
+                                <rect key="frame" x="136" y="113" width="103" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6C-Aq-7X0">
+                                <rect key="frame" x="159" y="178" width="57" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tn-Ai-1Yc">
+                                <rect key="frame" x="153.66666666666666" y="291" width="68" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVX-Q2-yJL">
+                                <rect key="frame" x="163" y="397" width="49" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Войти"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbI-Fd-CgS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wU8-zN-b2Y">
+                                <rect key="frame" x="171.66666666666666" y="335" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maf-1I-Xnt">
+                                <rect key="frame" x="171.66666666666666" y="222" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VKWallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="wBl-8E-btX" customClass="VKWallpapers">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99998790029999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="H6C-Aq-7X0" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="0XF-Th-pW9"/>
+                            <constraint firstItem="wU8-zN-b2Y" firstAttribute="top" secondItem="5tn-Ai-1Yc" secondAttribute="bottom" constant="20" id="0jy-Zt-PVN"/>
+                            <constraint firstItem="5tn-Ai-1Yc" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="67v-hO-lx9"/>
+                            <constraint firstItem="5tn-Ai-1Yc" firstAttribute="top" secondItem="maf-1I-Xnt" secondAttribute="bottom" constant="35" id="8wG-1T-kRC"/>
+                            <constraint firstItem="maf-1I-Xnt" firstAttribute="top" secondItem="H6C-Aq-7X0" secondAttribute="bottom" constant="20" id="9vQ-yt-W4I"/>
+                            <constraint firstItem="H6C-Aq-7X0" firstAttribute="top" secondItem="cOg-ig-Wls" secondAttribute="bottom" constant="35" id="A2G-vu-i12"/>
+                            <constraint firstItem="nVX-Q2-yJL" firstAttribute="top" secondItem="wU8-zN-b2Y" secondAttribute="bottom" constant="28" id="Btg-v3-Sob"/>
+                            <constraint firstItem="cOg-ig-Wls" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="I5g-ti-wLq"/>
+                            <constraint firstItem="wU8-zN-b2Y" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="KKj-Vn-z6H"/>
+                            <constraint firstItem="maf-1I-Xnt" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="MAq-UM-M97"/>
+                            <constraint firstItem="wU8-zN-b2Y" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="hWQ-ic-BdM"/>
+                            <constraint firstItem="nVX-Q2-yJL" firstAttribute="centerX" secondItem="gae-Az-ODq" secondAttribute="centerX" id="kmv-IO-Eus"/>
+                            <constraint firstItem="cOg-ig-Wls" firstAttribute="top" secondItem="gae-Az-ODq" secondAttribute="top" constant="69" id="ody-hZ-p0Y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gae-Az-ODq"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="nVX-Q2-yJL" id="u89-ZV-QHE"/>
+                        <outlet property="loginInput" destination="maf-1I-Xnt" id="teD-WT-6Bc"/>
+                        <outlet property="passwordInput" destination="wU8-zN-b2Y" id="rg6-zd-YtR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.4384236453202"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="VKWallpaper" width="1400" height="800"/>
+    </resources>
 </document>
