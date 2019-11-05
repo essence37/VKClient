@@ -16,4 +16,6 @@ class FriendProfileCell: UICollectionViewCell {
         
         friendProfileImageView.image = nil
     }
+    
+    
 }

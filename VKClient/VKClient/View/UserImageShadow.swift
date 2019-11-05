@@ -10,4 +10,15 @@ import UIKit
 
 class UserImageShadow: UIView {
     
+    @IBOutlet var userImageShadow: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        userImageShadow.layer.shadowColor = UIColor.black.cgColor
+        userImageShadow.layer.cornerRadius = bounds.height/2
+        userImageShadow.layer.shadowOffset = .zero
+        userImageShadow.layer.shadowRadius = 7
+        userImageShadow.layer.shadowOpacity = 0.8
+    }
 }

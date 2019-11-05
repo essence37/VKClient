@@ -10,6 +10,8 @@ import UIKit
 
 class MyFriendProfileController: UICollectionViewController {
     
+    @IBOutlet weak var likeControl: LikeControl!
+    
     var friendImage: UIImage? = UIImage()
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -34,4 +36,13 @@ class MyFriendProfileController: UICollectionViewController {
         
         return cell
     }
+   
+       override func viewDidLoad() {
+           likeControl.addTarget(self, action: #selector(likeControlChanged), for: .valueChanged)
+       }
+       
+       @objc private func likeControlChanged() {
+           
+       }
+    
 }
