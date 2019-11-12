@@ -10,12 +10,11 @@ import UIKit
 
 class FriendProfileCell: UICollectionViewCell {
     @IBOutlet weak var friendProfileImageView: UIImageView!
+
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         friendProfileImageView.image = nil
     }
-    
-    
 }

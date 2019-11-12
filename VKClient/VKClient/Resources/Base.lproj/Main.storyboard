@@ -350,9 +350,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="j9u-l5-0DK"/>
-                    <connections>
-                        <outlet property="likeControl" destination="8iT-GA-HRk" id="b3z-Fr-4yY"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSH-Dn-eQh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,7 @@ import UIKit
 class LikeControl: UIControl {
     
     @IBInspectable var isToggled: Bool = true
+    @IBOutlet weak var likeControl: LikeControl!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -53,5 +54,13 @@ class LikeControl: UIControl {
         setNeedsDisplay()
         sendActions(for: .valueChanged)
     }
+    
+//    override func viewDidLoad() {
+//        likeControl.addTarget(self, action: #selector(likeControlChanged), for: .valueChanged)
+//    }
+//
+//    @objc private func likeControlChanged() {
+//
+//    }
     
 }
