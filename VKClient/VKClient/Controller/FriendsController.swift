@@ -10,6 +10,17 @@ import UIKit
 
 class FriendsController: UITableViewController {
     
+    @IBOutlet var tableViewOutlet: UITableView! {
+        didSet {
+            tableViewOutlet.delegate = self
+        }
+    }
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+        }
+    }
+    
     let friends = [
 // было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
         User(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
@@ -24,7 +35,6 @@ class FriendsController: UITableViewController {
     ]
     
     var sortedFriends = [Character: [User]]()
-    
     
     override func viewDidLoad() {
            
@@ -109,5 +119,15 @@ class FriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          performSegue(withIdentifier: "Show friend image", sender: self)
     }
-    
+}
+
+extension FriendsController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            
+        } else {
+            
+        }
+        tableView.reloadData()
+    }
 }

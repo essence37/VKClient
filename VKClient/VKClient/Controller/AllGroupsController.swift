@@ -10,6 +10,12 @@ import UIKit
 
 class AllGroupsController: UITableViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+        }
+    }
+    
     let groups = [
         Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
         Group(image: UIImage(named: "Science")!, name: "Science"),
@@ -23,6 +29,8 @@ class AllGroupsController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 
+    var filteredGroups = [Group]()
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -30,7 +38,7 @@ class AllGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return filteredGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,11 +46,22 @@ class AllGroupsController: UITableViewController {
             preconditionFailure("GroupCell cannot be dequeued")
         }
         
-        let groupName = groups[indexPath.row].name
-        let groupImage = groups[indexPath.row].image
+        let groupName = filteredGroups[indexPath.row].name
+        let groupImage = filteredGroups[indexPath.row].image
         cell.groupNameLabel.text = groupName
         cell.groupImageView.image = groupImage
         
         return cell
+    }
+}
+
+extension AllGroupsController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredGroups = groups
+        } else {
+            filteredGroups = groups.filter{ $0.name.contains(searchText)}
+        }
+        tableView.reloadData()
     }
 }
