@@ -109,12 +109,13 @@ class FriendsController: UITableViewController {
             guard let destinationController = segue.destination as? MyFriendProfileController else { return }
             let index = tableView.indexPathForSelectedRow?.row ?? 0
             if friends.count > index {
-                let friend = friends[index] 
+                let friend = friends[index]
                 destinationController.navigationItem.title = friend.name //
                 destinationController.friendImage = friend.image
             }
         }
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          performSegue(withIdentifier: "Show friend image", sender: self)

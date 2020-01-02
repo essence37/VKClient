@@ -26,6 +26,7 @@ class AllGroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.filteredGroups = self.groups
         // Do any additional setup after loading the view.
     }
 

@@ -10,12 +10,15 @@ import UIKit
 
 class LoadView: UITableView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var downloadBallView1: UIView!
+    @IBOutlet weak var downloadBallView2: UIView!
+    @IBOutlet weak var downloadBallView3: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        downloadBallView1.layer.cornerRadius = bounds.height/2
+        downloadBallView2.layer.cornerRadius = bounds.height/2
+        downloadBallView3.layer.cornerRadius = bounds.height/2
     }
-    */
 
 }
