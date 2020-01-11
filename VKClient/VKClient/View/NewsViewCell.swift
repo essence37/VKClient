@@ -13,7 +13,7 @@ class NewsViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeControl: UIControl!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     

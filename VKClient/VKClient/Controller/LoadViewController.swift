@@ -8,10 +8,10 @@
 
 import UIKit
 
-class LoadViewController: UITableViewController {
-
+class LoadViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
 }

@@ -38,7 +38,7 @@ class FriendsController: UITableViewController {
     
     override func viewDidLoad() {
            
-        tableView.register(UINib(nibName: "GroupXibCell", bundle: nil), forCellReuseIdentifier: "GroupXibCell")
+        tableView.register(UINib(nibName: "FriendXibCell", bundle: nil), forCellReuseIdentifier: "FriendXibCell")
         
         self.sortedFriends = sort(friends: friends)
     }
@@ -75,7 +75,7 @@ class FriendsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupXibCell", for: indexPath) as? GroupXibCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendXibCell", for: indexPath) as? FriendXibCell else {
             preconditionFailure("FriendsCell cannot be dequeued")
         }
         

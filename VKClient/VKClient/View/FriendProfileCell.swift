@@ -12,9 +12,14 @@ class FriendProfileCell: UICollectionViewCell {
     @IBOutlet weak var friendProfileImageView: UIImageView!
     @IBOutlet var likeControl: LikeControl!
     
+    public func configureLikeControl(likes count: Int, isLikedByUser: Bool) {
+        likeControl.configure(likes: count, isLikedByUser: isLikedByUser)
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         friendProfileImageView.image = nil
     }
+    
+    
 }

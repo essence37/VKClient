@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoadView: UITableView {
+class LoadView: UIView {
 
     @IBOutlet weak var downloadBallView1: UIView!
     @IBOutlet weak var downloadBallView2: UIView!

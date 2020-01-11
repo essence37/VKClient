@@ -16,6 +16,10 @@ class MyGroupsController: UITableViewController {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        let session = Session.instance
+        session.token = "1"
+        session.userId = 1
     }
 
     // MARK: - Table view data source

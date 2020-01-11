@@ -32,6 +32,10 @@ class MyFriendProfileController: UICollectionViewController {
         */
         cell.friendProfileImageView.image = friendImage
         
+        let count: Int = Int.random(in: 5...500)
+        let isLiked: Bool = Bool.random()
+        cell.configureLikeControl(likes: count, isLikedByUser: isLiked)
+        
         return cell
     }
 }

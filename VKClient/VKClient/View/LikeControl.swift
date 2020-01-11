@@ -10,7 +10,9 @@ import UIKit
 
 class LikeControl: UIControl {
     
-    @IBInspectable var isToggled: Bool = true
+    @IBInspectable var isToggled: Bool = false
+    @IBOutlet var countLabel: UILabel!
+    @IBInspectable var count: Int = 0
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -27,13 +29,16 @@ class LikeControl: UIControl {
             let color = UIColor.red
             context.setFillColor(color.cgColor)
             path.fill()
-        }
+            count += 1
+        } else if count > 0 {count -= 1}
+        print(count)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupGesture()
+        countLabel?.text = String(count)
         
     }
     
@@ -41,6 +46,7 @@ class LikeControl: UIControl {
         super.init(coder: coder )
         
         setupGesture()
+        countLabel?.text = String(count)
         
     }
     
@@ -55,12 +61,9 @@ class LikeControl: UIControl {
         sendActions(for: .valueChanged)
     }
     
-//    override func viewDidLoad() {
-//        likeControl.addTarget(self, action: #selector(likeControlChanged), for: .valueChanged)
-//    }
-//
-//    @objc private func likeControlChanged() {
-//
-//    }
+    public func configure(likes count: Int, isLikedByUser: Bool) {
+        self.count = count
+        self.isToggled = isLikedByUser
+    }
     
 }
