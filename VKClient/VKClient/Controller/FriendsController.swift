@@ -23,18 +23,18 @@ class FriendsController: UITableViewController {
     
     let friends = [
 // было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
-        User(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
-        User(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
-        User(image: (UIImage(named: "Phoebe")!), name: "Phoebe Buffay"),
-        User(image: (UIImage(named: "Joey")!), name: "Joey Tribbiani"),
-        User(image: (UIImage(named: "Chandler")!), name: "Chandler Bing"),
-        User(image: (UIImage(named: "Ross")!), name: "Ross Geller"),
+        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
+        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
+        Friend(image: (UIImage(named: "Phoebe")!), name: "Phoebe Buffay"),
+        Friend(image: (UIImage(named: "Joey")!), name: "Joey Tribbiani"),
+        Friend(image: (UIImage(named: "Chandler")!), name: "Chandler Bing"),
+        Friend(image: (UIImage(named: "Ross")!), name: "Ross Geller"),
         
 //        ниже: так будет выглядеть с галереей-массивом фотографий, фото f1 f2 загружены в Assets
 //        User(image: (UIImage(named: "Ross")!), name: "Ross Geller", photos: [(UIImage(named: "f1")!),(UIImage(named: "f2")!)])
     ]
     
-    var sortedFriends = [Character: [User]]()
+    var sortedFriends = [Character: [Friend]]()
     
     override func viewDidLoad() {
            
@@ -43,9 +43,9 @@ class FriendsController: UITableViewController {
         self.sortedFriends = sort(friends: friends)
     }
     
-    private func sort(friends: [User]) -> [Character: [User]]{
+    private func sort(friends: [Friend]) -> [Character: [Friend]]{
         
-        var friendsDic = [Character: [User]]()
+        var friendsDic = [Character: [Friend]]()
         
         friends.forEach { friend in
             guard let firstChar = friend.name.first else { return }
@@ -88,7 +88,7 @@ class FriendsController: UITableViewController {
         cell.friendNameLabel.text = friendName
         cell.friendImageView.image = friendImage
         */
-        let friend: User = friends[indexPath.row]
+        let friend: Friend = friends[indexPath.row]
         cell.friendNameLabel.text = friend.name
         cell.friendImageView.image = friend.image
         

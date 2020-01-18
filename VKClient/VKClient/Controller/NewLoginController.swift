@@ -79,7 +79,7 @@ extension NewLoginController: WKNavigationDelegate {
         
         let token = params["access_token"]
         
-        print(token)
+//        print(token)
         
         Session.instance.token = token!
         Session.instance.userId = Int(params["user_id"]!) ?? 0
@@ -92,32 +92,3 @@ extension NewLoginController: WKNavigationDelegate {
     }
 }
 
-class VKApi {
-    
-    let vkApi = "https://api.vk.com/method/"
-    
-    func getFriendList(token: String) {
-        
-        let url = URL(string: vkApi + "friends.get")
-        let params = ["access token": token]
-        
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = "https"
-        urlConstructor.host = "api.vk.com"
-        urlConstructor.path = "/method/friends.get"
-        urlConstructor.queryItems = [URLQueryItem(name: "v", value: "5.103"),
-                                     URLQueryItem(name: "access_token", value: token),
-                                     URLQueryItem(name: "order", value: "name"),
-                                     URLQueryItem(name: "fields", value: "last_seen")]
-        var request = URLRequest(url: urlConstructor.url!)
-        request.httpMethod = "POST"
-        let task = session.dataTask(with: request) { (data, response,error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-            print(json)
-        }
-        task.resume()
-    }
-    
-}
