@@ -85,10 +85,13 @@ extension NewLoginController: WKNavigationDelegate {
         Session.instance.userId = Int(params["user_id"]!) ?? 0
     
         vkApi.getFriendList(token: Session.instance.token)
+        vkApi.loadUserData(token: Session.instance.token, complition: <#T##([User]) -> Void#>)
         
         performSegue(withIdentifier: "Login Segue", sender: nil)
         
         decisionHandler(.cancel)
+
     }
+    
 }
 
