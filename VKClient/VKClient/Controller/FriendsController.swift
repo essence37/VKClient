@@ -21,18 +21,22 @@ class FriendsController: UITableViewController {
         }
     }
     
-    let friends = [
-// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
-        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
-        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
-        Friend(image: (UIImage(named: "Phoebe")!), name: "Phoebe Buffay"),
-        Friend(image: (UIImage(named: "Joey")!), name: "Joey Tribbiani"),
-        Friend(image: (UIImage(named: "Chandler")!), name: "Chandler Bing"),
-        Friend(image: (UIImage(named: "Ross")!), name: "Ross Geller"),
-        
-//        ниже: так будет выглядеть с галереей-массивом фотографий, фото f1 f2 загружены в Assets
-//        User(image: (UIImage(named: "Ross")!), name: "Ross Geller", photos: [(UIImage(named: "f1")!),(UIImage(named: "f2")!)])
-    ]
+    var vkApi = VKApi()
+    
+    let friends = [Friend
+//// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
+//        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
+//        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
+//        Friend(image: (UIImage(named: "Phoebe")!), name: "Phoebe Buffay"),
+//        Friend(image: (UIImage(named: "Joey")!), name: "Joey Tribbiani"),
+//        Friend(image: (UIImage(named: "Chandler")!), name: "Chandler Bing"),
+//        Friend(image: (UIImage(named: "Ross")!), name: "Ross Geller"),
+//        
+////        ниже: так будет выглядеть с галереей-массивом фотографий, фото f1 f2 загружены в Assets
+////        User(image: (UIImage(named: "Ross")!), name: "Ross Geller", photos: [(UIImage(named: "f1")!),(UIImage(named: "f2")!)])
+    ]()
+    
+//    let friends = UserResponse.toUser.self
     
     var sortedFriends = [Character: [Friend]]()
     
@@ -41,6 +45,12 @@ class FriendsController: UITableViewController {
         tableView.register(UINib(nibName: "FriendXibCell", bundle: nil), forCellReuseIdentifier: "FriendXibCell")
         
         self.sortedFriends = sort(friends: friends)
+        
+        vkApi.loadUserData(token: Session.instance.token) { [weak self] (friends: Result<[Friend], Error>) in
+            self?.friends = friends
+            self?.tableView.reloadData()
+        }
+
     }
     
     private func sort(friends: [Friend]) -> [Character: [Friend]]{

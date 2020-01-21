@@ -9,11 +9,11 @@
 import UIKit
 
 class UserResponse: Decodable {
-    var response: UserData
+    let response: UserData
 }
 
 class UserData: Decodable {
-    var items: [User]
+    let items: [User]
 }
 
 class User: Decodable {
@@ -35,4 +35,13 @@ class User: Decodable {
     
 }
 
+extension UserResponse {
+    func toUser() -> [Friend] {
+        var friends = [Friend]()
+        response.items.forEach { (friendItem) in
+            friends.append(Friend(image: (UIImage(named: "Joey")!), name: friendItem.firstName + " " + friendItem.lastName))
+        }
+        return friends
+    }
+}
 
