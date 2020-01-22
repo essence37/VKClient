@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 class VKApi {
     
@@ -51,7 +52,11 @@ class VKApi {
             guard let data = response.value else { return }
             do {
                 let user = (try JSONDecoder().decode(T.self, from: data))
+                
+                self.saveUserData(user)
+                
                 completion(.success(user))
+                
             } catch {
                 completion(.failure(RequestError.decodableError))
             }
@@ -85,6 +90,22 @@ class VKApi {
             }
         }
         
+    }
+       
+    // MARK: - Сохранение данных о друзьях в Realm
+    
+    func saveUserData (_ users: [User]) {
+        do {
+            let realm = try Realm()
+            
+            realm.beginWrite()
+            
+            realm.add(users)
+            
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
     }
     
     
