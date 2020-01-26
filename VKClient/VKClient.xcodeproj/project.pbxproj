@@ -10,6 +10,7 @@
 		191AF41E261A76E36A693FA3 /* Pods_VKClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4406B9B116C57512936EBC /* Pods_VKClient.framework */; };
 		F41494772389D21E005C55E3 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494762389D21E005C55E3 /* LoadView.swift */; };
 		F41494792389D380005C55E3 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494782389D380005C55E3 /* LoadViewController.swift */; };
+		F421679E23DDF6A100F600D3 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421679D23DDF6A100F600D3 /* Realm.swift */; };
 		F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA08236626010020B95A /* MyFriendProfileController.swift */; };
 		F429DA0B2366271B0020B95A /* FriendProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA0A2366271B0020B95A /* FriendProfileCell.swift */; };
 		F42AEB6D235E258D00CA08D1 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AEB6C235E258D00CA08D1 /* UIViewController+Extensions.swift */; };
@@ -46,6 +47,7 @@
 		95815F7C5FB271264D53C26A /* Pods-VKClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKClient.debug.xcconfig"; path = "Target Support Files/Pods-VKClient/Pods-VKClient.debug.xcconfig"; sourceTree = "<group>"; };
 		F41494762389D21E005C55E3 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		F41494782389D380005C55E3 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
+		F421679D23DDF6A100F600D3 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		F429DA08236626010020B95A /* MyFriendProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendProfileController.swift; sourceTree = "<group>"; };
 		F429DA0A2366271B0020B95A /* FriendProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCell.swift; sourceTree = "<group>"; };
 		F42AEB6C235E258D00CA08D1 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -107,6 +109,14 @@
 				FCD9DFF3569CE8950ADF64C9 /* Pods-VKClient.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F421679F23DDF6F000F600D3 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				F421679D23DDF6A100F600D3 /* Realm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		F48DC28F23669F8900D2DC49 /* Model */ = {
@@ -205,6 +215,7 @@
 				F4F0EF5F235A41C7003410B9 /* SceneDelegate.swift */,
 				F48DC29223669FF800D2DC49 /* Helpers */,
 				F48DC29123669FBD00D2DC49 /* Controller */,
+				F421679F23DDF6F000F600D3 /* Realm */,
 				F4E7244023D33907006DBACC /* API */,
 				F48DC28F23669F8900D2DC49 /* Model */,
 				F48DC29023669FA100D2DC49 /* View */,
@@ -333,6 +344,7 @@
 				F41494772389D21E005C55E3 /* LoadView.swift in Sources */,
 				F49374AA236386D30056C8F3 /* GroupCell.swift in Sources */,
 				F4EFB93D236D8BE8000202F1 /* UserImageView.swift in Sources */,
+				F421679E23DDF6A100F600D3 /* Realm.swift in Sources */,
 				F446D58723713ADF00A1EE56 /* LikeControl.swift in Sources */,
 				F4EFB93F236D8C26000202F1 /* UserImageShadow.swift in Sources */,
 				F4BFE28C23D376A2002D27AD /* User.swift in Sources */,

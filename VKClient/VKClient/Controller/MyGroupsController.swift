@@ -10,13 +10,23 @@ import UIKit
 
 class MyGroupsController: UITableViewController {
 
+    var vkApi = VKApi()
+    
     var myGroups = [Group] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
         
+        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[Group], Error>) in
+            switch groups {
+            case .success(let myGroups):
+                self?.myGroups = myGroups
+                self?.tableView.reloadData()
+            case .failure(let error): break
+            }
+        }
 //        let session = Session.instance
 //        session.token = "1"
 //        session.userId = 1

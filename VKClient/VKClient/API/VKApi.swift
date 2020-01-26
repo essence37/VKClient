@@ -53,8 +53,6 @@ class VKApi {
             do {
                 let user = (try JSONDecoder().decode(T.self, from: data))
                 
-                self.saveUserData(user)
-                
                 completion(.success(user))
                 
             } catch {
@@ -67,9 +65,10 @@ class VKApi {
      
         let parameters: Parameters = [
             "access_token": token,//"8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277"
-            "v": "5.103"
+            "v": "5.103",
+            "order": "name",
+            "fields": "photo_100"
         ]
-        
 //        AF.request(vkApiConfigurator("friends.get")!, method: .get, parameters: parameters).responseData { response in
 //            guard let data = response.value else { return }
 //            do {
@@ -91,26 +90,26 @@ class VKApi {
         }
         
     }
-       
-    // MARK: - Сохранение данных о друзьях в Realm
     
-    func saveUserData (_ users: [User]) {
-        do {
-            let realm = try Realm()
+    func loadGroupsData(token: String, completion: @escaping (Result<[Group], Error>) -> Void) {
+         
+            let parameters: Parameters = [
+                "access_token": token,//"8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277"
+                "v": "5.103",
+                "extended": "1",
+                "fields": "photo_100, name"
+            ]
             
-            realm.beginWrite()
+            requestServer(requestURL: vkApiConfigurator("groups.get")!, parameters: parameters) { (groups: Result<GroupsResponse, Error>) in
+                
+                switch groups {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let groups):
+                    completion(.success(groups.toGroups()))
+                }
+            }
             
-            realm.add(users)
-            
-            try realm.commitWrite()
-        } catch {
-            print(error)
         }
-    }
-    
-    
-        
-  
-    
 }
 

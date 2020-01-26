@@ -23,7 +23,7 @@ class FriendsController: UITableViewController {
     
     var vkApi = VKApi()
     
-    let friends = [Friend
+    var friends = [Friend
 //// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
 //        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
 //        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
@@ -47,8 +47,12 @@ class FriendsController: UITableViewController {
         self.sortedFriends = sort(friends: friends)
         
         vkApi.loadUserData(token: Session.instance.token) { [weak self] (friends: Result<[Friend], Error>) in
+            switch friends {
+            case .success(let friends):
             self?.friends = friends
             self?.tableView.reloadData()
+            case .failure(let error): break
+            }
         }
 
     }
