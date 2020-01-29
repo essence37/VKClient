@@ -40,7 +40,7 @@ extension GroupsResponse {
     func toGroups() -> [Group] {
         var myGroups = [Group]()
         response.items.forEach { (groupItem) in
-            myGroups.append(Group(image: (UIImage(named: groupItem.photo)!), name: groupItem.name))
+            myGroups.append(Group(image: (UIImage(named: "Joey")!), name: groupItem.name))
         }
         return myGroups
     }

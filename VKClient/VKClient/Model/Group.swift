@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class Group {
     let image: UIImage?

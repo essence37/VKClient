@@ -11,31 +11,25 @@ import RealmSwift
 
  // MARK: - Сохранение данных о друзьях в Realm
 
-func saveUserData (_ users: [User]) {
-    do {
-        let realm = try Realm()
-        
-        realm.beginWrite()
-        
-        realm.add(users)
-        
-        try realm.commitWrite()
-    } catch {
-        print(error)
-    }
-}
-
-
-func saveGroupsData (_ groups: [Groups]) {
+class UserRepository {
+    
+    func saveUserData (user: User) {
         do {
             let realm = try Realm()
             
-            realm.beginWrite()
+            try realm.write {
+                let userRealm = User()
+                userRealm.firstName = user.firstName
+                userRealm.lastName = user.lastName
+                userRealm.photo = user.photo
+            }
             
-            realm.add(groups)
-            
+            realm.add(user)
+            print(realm.objects(User.self ))
             try realm.commitWrite()
         } catch {
             print(error)
         }
     }
+    
+}

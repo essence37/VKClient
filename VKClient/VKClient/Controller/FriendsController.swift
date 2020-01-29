@@ -22,7 +22,7 @@ class FriendsController: UITableViewController {
     }
     
     var vkApi = VKApi()
-    
+    var database = UserRepository()
     var friends = [Friend
 //// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
 //        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
@@ -50,6 +50,7 @@ class FriendsController: UITableViewController {
             switch friends {
             case .success(let friends):
             self?.friends = friends
+            self?.database.saveUserData(user: friends)
             self?.tableView.reloadData()
             case .failure(let error): break
             }

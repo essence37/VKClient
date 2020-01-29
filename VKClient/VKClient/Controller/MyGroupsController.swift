@@ -26,6 +26,7 @@ class MyGroupsController: UITableViewController {
                 self?.tableView.reloadData()
             case .failure(let error): break
             }
+            
         }
 //        let session = Session.instance
 //        session.token = "1"

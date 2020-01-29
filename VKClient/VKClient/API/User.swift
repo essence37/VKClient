@@ -80,7 +80,7 @@ extension UserResponse {
     func toUser() -> [Friend] {
         var friends = [Friend]()
         response.items.forEach { (friendItem) in
-            friends.append(Friend(image: (UIImage(named: friendItem.photo)!), name: friendItem.firstName + " " + friendItem.lastName))
+            friends.append(Friend(image: friendItem.photo, name: friendItem.firstName + " " + friendItem.lastName))
         }
         return friends
     }
