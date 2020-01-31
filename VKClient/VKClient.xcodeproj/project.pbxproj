@@ -41,6 +41,7 @@
 		F4F0EF65235A41C7003410B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF63235A41C7003410B9 /* Main.storyboard */; };
 		F4F0EF67235A41C7003410B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF66235A41C7003410B9 /* Assets.xcassets */; };
 		F4F0EF6A235A41C7003410B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF68235A41C7003410B9 /* LaunchScreen.storyboard */; };
+		F4FF3FF923E4ABA700FF2051 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		F4F0EF66235A41C7003410B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4F0EF69235A41C7003410B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4F0EF6B235A41C7003410B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		FCD9DFF3569CE8950ADF64C9 /* Pods-VKClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKClient.release.xcconfig"; path = "Target Support Files/Pods-VKClient/Pods-VKClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				F49374A7236379670056C8F3 /* Friend.swift */,
 				F49374AB236387EA0056C8F3 /* Group.swift */,
 				F4B0BD0F23CA51040031A10D /* Session.swift */,
+				F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */,
 				F41494792389D380005C55E3 /* LoadViewController.swift in Sources */,
 				F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */,
+				F4FF3FF923E4ABA700FF2051 /* CommonResponse.swift in Sources */,
 				F45378F323CE3728005C22C3 /* NewLoginController.swift in Sources */,
 				F49374AC236387EA0056C8F3 /* Group.swift in Sources */,
 				F4F0EF62235A41C7003410B9 /* LoginController.swift in Sources */,

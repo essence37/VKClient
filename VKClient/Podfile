@@ -9,6 +9,7 @@ target 'VKClient' do
 
   # Pods for VKClient
   pod 'RealmSwift'
+  pod 'Kingfisher', '~> 5.0'
 
 
 end

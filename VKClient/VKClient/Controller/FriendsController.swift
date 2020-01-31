@@ -46,12 +46,12 @@ class FriendsController: UITableViewController {
         
         self.sortedFriends = sort(friends: friends)
         
-        vkApi.loadUserData(token: Session.instance.token) { [weak self] (friends: Result<[Friend], Error>) in
-            switch friends {
+        vkApi.loadUserData(token: Session.instance.token) { [weak self] result in
+            switch result {
             case .success(let friends):
-            self?.friends = friends
-            self?.database.saveUserData(user: friends)
-            self?.tableView.reloadData()
+                self?.friends = friends
+                self?.database.saveUserData(user: friends)
+                self?.tableView.reloadData()
             case .failure(let error): break
             }
         }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Пазин Даниил. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Alamofire
 import RealmSwift
 
@@ -40,58 +40,35 @@ class VKApi {
         // MARK: - Универсальная функция для формирования запроса.
         
     func vkApiConfigurator(_ apiMethod:String) -> URL? {
-        
         let vkApi = "https://api.vk.com/method/"
         return URL(string: vkApi + apiMethod)
-        
     }
     
-    func requestServer<T: Decodable>(requestURL: URL, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
-        
-        AF.request(requestURL, method: .get, parameters: parameters).responseData { response in
+    func sendRequest<T: Decodable>(requestURL: URL, method: HTTPMethod = .get, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
+        AF.request(requestURL, method: method, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
+            
             do {
-                let user = (try JSONDecoder().decode(T.self, from: data))
-                
-                completion(.success(user))
-                
+                let result = (try JSONDecoder().decode(CommonResponse<T>.self, from: data))
+                completion(.success(result.response.items))
             } catch {
                 completion(.failure(RequestError.decodableError))
             }
         }
     }
     
-    func loadUserData(token: String, completion: @escaping (Result<[Friend], Error>) -> Void) {
-     
+    func loadUserData(token: String, completion: @escaping (Result<[User], Error>) -> Void) {
         let parameters: Parameters = [
             "access_token": token,//"8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277"
             "v": "5.103",
             "order": "name",
             "fields": "photo_100"
         ]
-//        AF.request(vkApiConfigurator("friends.get")!, method: .get, parameters: parameters).responseData { response in
-//            guard let data = response.value else { return }
-//            do {
-//            let user = (try JSONDecoder().decode(UserData.self, from: data)).items
-//            completion(user)
-//            } catch let error {
-//                print(error)
-//            }
-//        }
         
-        requestServer(requestURL: vkApiConfigurator("friends.get")!, parameters: parameters) { (users: Result<UserResponse, Error>) in
-            
-            switch users {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let friends):
-                completion(.success(friends.toUser()))
-            }
-        }
-        
+        sendRequest(requestURL: vkApiConfigurator("friends.get")!, method: .post, parameters: parameters) { completion($0) }
     }
     
-    func loadGroupsData(token: String, completion: @escaping (Result<[Group], Error>) -> Void) {
+    func loadGroupsData(token: String, completion: @escaping (Result<[Groups], Error>) -> Void) {
          
             let parameters: Parameters = [
                 "access_token": token,//"8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277"
@@ -100,16 +77,7 @@ class VKApi {
                 "fields": "photo_100, name"
             ]
             
-            requestServer(requestURL: vkApiConfigurator("groups.get")!, parameters: parameters) { (groups: Result<GroupsResponse, Error>) in
-                
-                switch groups {
-                case .failure(let error):
-                    completion(.failure(error))
-                case .success(let groups):
-                    completion(.success(groups.toGroups()))
-                }
-            }
-            
-        }
+        sendRequest(requestURL: vkApiConfigurator("groups.get")!, method: .post, parameters: parameters) { completion($0) }
+    }
 }
 
