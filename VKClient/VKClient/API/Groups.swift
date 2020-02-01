@@ -36,13 +36,13 @@ class Groups: Object, Decodable {
     
 }
 
-extension GroupsResponse {
-    func toGroups() -> [Group] {
-        var myGroups = [Group]()
-        response.items.forEach { (groupItem) in
-            myGroups.append(Group(image: (UIImage(named: "Joey")!), name: groupItem.name))
-        }
-        return myGroups
-    }
-}
+//extension GroupsResponse {
+//    func toGroups() -> [Group] {
+//        var myGroups = [Group]()
+//        response.items.forEach { (groupItem) in
+//            myGroups.append(Group(image: (UIImage(named: "Joey")!), name: groupItem.name))
+//        }
+//        return myGroups
+//    }
+//}
 

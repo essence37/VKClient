@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AllGroupsController: UITableViewController {
 
@@ -16,21 +17,33 @@ class AllGroupsController: UITableViewController {
         }
     }
     
-    let groups = [
-        Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
-        Group(image: UIImage(named: "Science")!, name: "Science"),
-        Group(image: UIImage(named: "Stand up")!, name: "Stand up"),
-        Group(image: UIImage(named: "ITNews")!, name: "ITNews"),
-    ]
+    var vkApi = VKApi()
+    var groups = [Groups]()
+    
+//    let groups = [
+//        Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
+//        Group(image: UIImage(named: "Science")!, name: "Science"),
+//        Group(image: UIImage(named: "Stand up")!, name: "Stand up"),
+//        Group(image: UIImage(named: "ITNews")!, name: "ITNews"),
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.filteredGroups = self.groups
         // Do any additional setup after loading the view.
+        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[Groups], Error>) in
+            switch groups {
+            case .success(let groups):
+                self?.groups = groups
+                self?.tableView.reloadData()
+            case .failure(let error): break
+            }
+            
+        }
     }
 
-    var filteredGroups = [Group]()
+    var filteredGroups = [Groups]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -48,9 +61,11 @@ class AllGroupsController: UITableViewController {
         }
         
         let groupName = filteredGroups[indexPath.row].name
-        let groupImage = filteredGroups[indexPath.row].image
+        let groupImage = filteredGroups[indexPath.row].photo
         cell.groupNameLabel.text = groupName
-        cell.groupImageView.image = groupImage
+        // Отобразить картинку с помощью Kingfisher
+        let url = URL(string: groupImage)
+        cell.groupImageView.kf.setImage(with: url)
         
         return cell
     }

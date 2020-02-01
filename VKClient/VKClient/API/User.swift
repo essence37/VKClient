@@ -56,6 +56,8 @@ class UserData: Decodable {
 
 class User: Object, Decodable {
     
+    
+    
     @objc dynamic var firstName = ""
     @objc dynamic var lastName = ""
     @objc dynamic var photo = ""
@@ -76,12 +78,12 @@ class User: Object, Decodable {
     
 }
 
-extension UserResponse {
-    func toUser() -> [Friend] {
-        var friends = [Friend]()
-        response.items.forEach { (friendItem) in
-            friends.append(Friend(image: friendItem.photo, name: friendItem.firstName + " " + friendItem.lastName))
-        }
-        return friends
-    }
-}
+//extension UserResponse {
+//    func toUser() -> [Friend] {
+//        var friends = [Friend]()
+//        response.items.forEach { (friendItem) in
+//            friends.append(Friend(image: friendItem.photo, name: friendItem.firstName + " " + friendItem.lastName))
+//        }
+//        return friends
+//    }
+//}

@@ -44,7 +44,7 @@ class VKApi {
         return URL(string: vkApi + apiMethod)
     }
     
-    func sendRequest<T: Decodable>(requestURL: URL, method: HTTPMethod = .get, parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
+    func sendRequest<T: Decodable>(requestURL: URL, method: HTTPMethod = .get, parameters: Parameters, completion: @escaping (Result<[T], Error>) -> Void) {
         AF.request(requestURL, method: method, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             

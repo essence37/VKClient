@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendsController: UITableViewController {
     
@@ -23,7 +24,7 @@ class FriendsController: UITableViewController {
     
     var vkApi = VKApi()
     var database = UserRepository()
-    var friends = [Friend
+    var friends = [User
 //// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
 //        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
 //        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
@@ -38,7 +39,7 @@ class FriendsController: UITableViewController {
     
 //    let friends = UserResponse.toUser.self
     
-    var sortedFriends = [Character: [Friend]]()
+    var sortedFriends = [Character: [User]]()
     
     override func viewDidLoad() {
            
@@ -50,7 +51,7 @@ class FriendsController: UITableViewController {
             switch result {
             case .success(let friends):
                 self?.friends = friends
-                self?.database.saveUserData(user: friends)
+//                self?.database.saveUserData(user: friends)
                 self?.tableView.reloadData()
             case .failure(let error): break
             }
@@ -58,15 +59,15 @@ class FriendsController: UITableViewController {
 
     }
     
-    private func sort(friends: [Friend]) -> [Character: [Friend]]{
+    private func sort(friends: [User]) -> [Character: [User]]{
         
-        var friendsDic = [Character: [Friend]]()
+        var friendsDic = [Character: [User]]()
         
         friends.forEach { friend in
-            guard let firstChar = friend.name.first else { return }
+            guard let firstChar = friend.lastName.first else { return }
             if var thisCharFriends = friendsDic[firstChar] {
                 thisCharFriends.append(friend)
-                friendsDic[firstChar] = thisCharFriends.sorted { $0.name < $1.name }
+                friendsDic[firstChar] = thisCharFriends.sorted { $0.lastName < $1.lastName }
             } else {
                 friendsDic[firstChar] = [friend]
             }
@@ -103,9 +104,13 @@ class FriendsController: UITableViewController {
         cell.friendNameLabel.text = friendName
         cell.friendImageView.image = friendImage
         */
-        let friend: Friend = friends[indexPath.row]
-        cell.friendNameLabel.text = friend.name
-        cell.friendImageView.image = friend.image
+        
+        let friend: User = friends[indexPath.row]
+        cell.friendNameLabel.text = friend.lastName
+        
+        // Отобразить картинку с помощью Kingfisher
+        let url = URL(string: friend.photo)
+        cell.friendImageView.kf.setImage(with: url)
         
         return cell
     }
@@ -119,22 +124,28 @@ class FriendsController: UITableViewController {
         }
     }
  */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Show friend image" {
-            guard let destinationController = segue.destination as? MyFriendProfileController else { return }
-            let index = tableView.indexPathForSelectedRow?.row ?? 0
-            if friends.count > index {
-                let friend = friends[index]
-                destinationController.navigationItem.title = friend.name //
-                destinationController.friendImage = friend.image
-            }
-        }
-    }
+//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> user.self {
+//        let firstChar = sortedFriends.keys.sorted()[indexPath.section]
+//        let friends = sortedFriends[firstChar]!
+//    }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         performSegue(withIdentifier: "Show friend image", sender: self)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "Show friend image" {
+//            guard let destinationController = segue.destination as? MyFriendProfileController else { return }
+//            let index = tableView.indexPathForSelectedRow?.row ?? 0
+//            if friends.count > index {
+//                let friend = friends[index]
+//                destinationController.navigationItem.title = friends.name
+//                destinationController.friendImage = friend.photo
+//            }
+//        }
+//    }
+//
+//
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//         performSegue(withIdentifier: "Show friend image", sender: self)
+//    }
 }
 
 extension FriendsController: UISearchBarDelegate {

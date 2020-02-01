@@ -10,27 +10,11 @@ import UIKit
 
 class MyGroupsController: UITableViewController {
 
-    var vkApi = VKApi()
-    
-    var myGroups = [Group] ()
+    var myGroups = [Groups] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[Group], Error>) in
-            switch groups {
-            case .success(let myGroups):
-                self?.myGroups = myGroups
-                self?.tableView.reloadData()
-            case .failure(let error): break
-            }
-            
-        }
-//        let session = Session.instance
-//        session.token = "1"
-//        session.userId = 1
     }
 
     // MARK: - Table view data source
@@ -51,9 +35,11 @@ class MyGroupsController: UITableViewController {
         }
         
         let groupName = myGroups[indexPath.row].name
-        let groupImage = myGroups[indexPath.row].image
+        let groupImage = myGroups[indexPath.row].photo
         cell.groupNameLabel.text = groupName
-        cell.groupImageView.image = groupImage
+        // Отобразить картинку с помощью Kingfisher
+        let url = URL(string: groupImage)
+        cell.groupImageView.kf.setImage(with: url)
         
         return cell
     }
