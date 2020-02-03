@@ -9,12 +9,14 @@
 import UIKit
 import RealmSwift
 
-class Group {
-    let image: UIImage?
-    let name: String
+struct GroupItems: Decodable {
+    var id: Int
+    var name: String
+    var photo: String
     
-    init(image: UIImage, name: String) {
-        self.image = image
-        self.name = name
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case photo = "photo_100"
     }
 }

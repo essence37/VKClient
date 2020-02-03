@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class AllGroupsController: UITableViewController {
 
@@ -17,8 +18,10 @@ class AllGroupsController: UITableViewController {
         }
     }
     
+    var database = GroupRepository()
     var vkApi = VKApi()
-    var groups = [Groups]()
+    var groups = [GroupsRealm]()
+    
     
 //    let groups = [
 //        Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
@@ -30,20 +33,21 @@ class AllGroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.filteredGroups = self.groups
-        // Do any additional setup after loading the view.
-        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[Groups], Error>) in
+        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
             switch groups {
             case .success(let groups):
                 self?.groups = groups
+                self?.database.addGroups(groups: groups)
                 self?.tableView.reloadData()
             case .failure(let error): break
             }
-            
         }
+        
+        self.filteredGroups = self.groups
+        
     }
 
-    var filteredGroups = [Groups]()
+    var filteredGroups = [GroupsRealm]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

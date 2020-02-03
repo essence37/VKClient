@@ -7,14 +7,42 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
 class MyGroupsController: UITableViewController {
 
-    var myGroups = [Groups] ()
+    var myGroups = [GroupsRealm] ()
+    var database = GroupRepository()
+    
+    var groupsResult: Results<GroupsRealm>!
+    var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        showGroups()
+    }
+
+    func showGroups() {
+        do {
+            
+            groupsResult = try database.getAllGroups()
+            
+            token = groupsResult.observe { results in
+                switch results {
+                case .error(let error): break
+                case .initial(let groups): break
+                case let .update(_, deletions, insertions, modifications):
+                    print(deletions)
+                    print(insertions)
+                    print(modifications)
+                }
+            }
+        } catch {
+            print(error)
+        }
     }
 
     // MARK: - Table view data source
@@ -26,7 +54,7 @@ class MyGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myGroups.count
+        return groupsResult.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,8 +62,8 @@ class MyGroupsController: UITableViewController {
             preconditionFailure("GroupCell cannot be dequeued")
         }
         
-        let groupName = myGroups[indexPath.row].name
-        let groupImage = myGroups[indexPath.row].photo
+        let groupName = groupsResult[indexPath.row].name
+        let groupImage = groupsResult[indexPath.row].photo
         cell.groupNameLabel.text = groupName
         // Отобразить картинку с помощью Kingfisher
         let url = URL(string: groupImage)

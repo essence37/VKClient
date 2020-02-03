@@ -68,7 +68,7 @@ class VKApi {
         sendRequest(requestURL: vkApiConfigurator("friends.get")!, method: .post, parameters: parameters) { completion($0) }
     }
     
-    func loadGroupsData(token: String, completion: @escaping (Result<[Groups], Error>) -> Void) {
+    func loadGroupsData(token: String, completion: @escaping (Result<[GroupsRealm], Error>) -> Void) {
          
             let parameters: Parameters = [
                 "access_token": token,//"8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277"
