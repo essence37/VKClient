@@ -28,7 +28,7 @@ class MyGroupsController: UITableViewController {
     func showGroups() {
         do {
             
-            groupsResult = try database.getAllGroups()
+            groupsResult = database.getAllGroups()
             
             token = groupsResult.observe { results in
                 switch results {

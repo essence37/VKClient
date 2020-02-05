@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N50-YT-Cvr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -99,12 +99,22 @@
                                             <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbI-Fd-CgS"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQL-PX-k0p">
+                                        <rect key="frame" x="108" y="414" width="159" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Зарегистрироваться"/>
+                                        <connections>
+                                            <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2yp-2n-zUs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="5tn-Ai-1Yc" firstAttribute="top" secondItem="maf-1I-Xnt" secondAttribute="bottom" constant="35" id="0y8-Ib-037"/>
                                     <constraint firstItem="wU8-zN-b2Y" firstAttribute="top" secondItem="5tn-Ai-1Yc" secondAttribute="bottom" constant="20" id="2Il-42-bEd"/>
-                                    <constraint firstItem="yp1-is-3Lw" firstAttribute="bottom" secondItem="nVX-Q2-yJL" secondAttribute="bottom" constant="20" id="4rI-5K-q0P"/>
+                                    <constraint firstItem="bQL-PX-k0p" firstAttribute="centerX" secondItem="Mqp-l1-QGm" secondAttribute="centerX" id="3I0-w8-qKE"/>
+                                    <constraint firstItem="bQL-PX-k0p" firstAttribute="top" secondItem="nVX-Q2-yJL" secondAttribute="bottom" constant="28" id="4rI-5K-q0P"/>
                                     <constraint firstItem="cOg-ig-Wls" firstAttribute="top" secondItem="yp1-is-3Lw" secondAttribute="top" constant="69" id="6Ee-UE-9D8"/>
+                                    <constraint firstItem="yp1-is-3Lw" firstAttribute="bottom" secondItem="bQL-PX-k0p" secondAttribute="bottom" constant="290" id="CtC-Lh-3fp"/>
                                     <constraint firstItem="nVX-Q2-yJL" firstAttribute="centerX" secondItem="Mqp-l1-QGm" secondAttribute="centerX" id="EVW-km-9lC"/>
                                     <constraint firstItem="5tn-Ai-1Yc" firstAttribute="centerX" secondItem="Mqp-l1-QGm" secondAttribute="centerX" id="PHC-8r-lQh"/>
                                     <constraint firstAttribute="trailing" secondItem="cOg-ig-Wls" secondAttribute="trailing" constant="136" id="Upy-3w-SNF"/>
@@ -620,6 +630,6 @@
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tum-4S-iDi"/>
+        <segue reference="2CT-UR-vdr"/>
     </inferredMetricsTieBreakers>
 </document>

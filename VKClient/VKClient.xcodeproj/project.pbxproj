@@ -41,6 +41,7 @@
 		F4F0EF65235A41C7003410B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF63235A41C7003410B9 /* Main.storyboard */; };
 		F4F0EF67235A41C7003410B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF66235A41C7003410B9 /* Assets.xcassets */; };
 		F4F0EF6A235A41C7003410B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F0EF68235A41C7003410B9 /* LaunchScreen.storyboard */; };
+		F4F144B323EB0C0C0002AFFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F144B223EB0C0C0002AFFA /* GoogleService-Info.plist */; };
 		F4FF3FF923E4ABA700FF2051 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		F4F0EF66235A41C7003410B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4F0EF69235A41C7003410B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4F0EF6B235A41C7003410B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4F144B223EB0C0C0002AFFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		FCD9DFF3569CE8950ADF64C9 /* Pods-VKClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKClient.release.xcconfig"; path = "Target Support Files/Pods-VKClient/Pods-VKClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +120,7 @@
 		F421679F23DDF6F000F600D3 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F4DF7DE023E6DB380042B815 /* ReakmRepository */,
+				F4DF7DE023E6DB380042B815 /* RealmRepository */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -184,13 +186,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F4DF7DE023E6DB380042B815 /* ReakmRepository */ = {
+		F4DF7DE023E6DB380042B815 /* RealmRepository */ = {
 			isa = PBXGroup;
 			children = (
 				F421679D23DDF6A100F600D3 /* UserRepository.swift */,
 				F40A809A23E1FBF500C17708 /* GroupRepository.swift */,
 			);
-			path = ReakmRepository;
+			path = RealmRepository;
 			sourceTree = "<group>";
 		};
 		F4E7244023D33907006DBACC /* API */ = {
@@ -234,6 +236,7 @@
 				F48DC28F23669F8900D2DC49 /* Model */,
 				F48DC29023669FA100D2DC49 /* View */,
 				F48DC2932366A02400D2DC49 /* Resources */,
+				F4F144B223EB0C0C0002AFFA /* GoogleService-Info.plist */,
 				F4F0EF6B235A41C7003410B9 /* Info.plist */,
 			);
 			path = VKClient;
@@ -301,6 +304,7 @@
 			files = (
 				F4F0EF6A235A41C7003410B9 /* LaunchScreen.storyboard in Resources */,
 				F44E50522379DD800003B96B /* FriendXibCell.xib in Resources */,
+				F4F144B323EB0C0C0002AFFA /* GoogleService-Info.plist in Resources */,
 				F4F0EF67235A41C7003410B9 /* Assets.xcassets in Resources */,
 				F4F0EF65235A41C7003410B9 /* Main.storyboard in Resources */,
 			);

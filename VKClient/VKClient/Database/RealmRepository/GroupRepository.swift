@@ -24,6 +24,7 @@ class GroupRepository {
                 var groupsToAdd = [GroupsRealm]()
                 groups.forEach { group in
                     let groupRealm = GroupsRealm()
+                    groupRealm.id = group.id
                     groupRealm.name = group.name
                     groupRealm.photo = group.photo
                     groupsToAdd.append(groupRealm)

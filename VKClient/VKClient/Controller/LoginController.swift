@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
 
@@ -14,16 +15,72 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBAction func loginButtonPressed(_ sender: Any) {
-        guard let login = loginInput.text,
+//        guard let login = loginInput.text,
+//            let password = passwordInput.text,
+//            login == "",
+//            password == "" else {
+//                show(message: "Incorrect login/password")
+//                return
+//        }
+//
+//        performSegue(withIdentifier: "Login Segue", sender: nil)
+        
+        guard
+            let email = loginInput.text,
             let password = passwordInput.text,
-            login == "",
-            password == "" else {
-                show(message: "Incorrect login/password")
+        email.count > 0,
+        password.count > 0
+            else {
+                self.show(message: "Логин/пароль не введены")
                 return
         }
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            if let error = error, user == nil {
+                self.show(message: error.localizedDescription)
+            }
+        }
         
-        performSegue(withIdentifier: "Login Segue", sender: nil)
+        
     }
+    
+    @IBAction func signUpButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Register",
+                                      message: "Register",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField { textEmail in
+            textEmail.placeholder = "Enter your email"
+        }
+        
+        alert.addTextField { textPassword in
+            textPassword.isSecureTextEntry = false
+            textPassword.placeholder = "Enter your password"
+        }
+        
+        let cancelAction = UIAlertAction (title: "Cancel",
+                                          style: .cancel)
+        
+        let saveAction = UIAlertAction (title: "Save", style: .default) { _ in
+            guard let emailField = alert.textFields?[0],
+                let passwordField = alert.textFields?[1],
+                let password = passwordField.text,
+                let email = emailField.text else { return }
+            
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
+                if let error = error {
+                    self?.show(message: error.localizedDescription)
+                } else {
+                    Auth.auth().signIn(withEmail: email, password: password)
+                }
+            }
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private var handle: AuthStateDidChangeListenerHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +92,24 @@ class LoginController: UIViewController {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        self.handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "Login Segue", sender: nil)
+                self.loginInput.text = nil
+                self.passwordInput.text = nil
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle)
     }
 
     @objc func keyboardWasShown (notification: Notification) {
