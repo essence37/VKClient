@@ -30,14 +30,20 @@ class MyGroupsController: UITableViewController {
             
             groupsResult = database.getAllGroups()
             
-            token = groupsResult.observe { results in
+            token = groupsResult.observe { [weak self] results in
                 switch results {
                 case .error(let error): break
-                case .initial(let groups): break
+                case .initial(let groups): self?.tableView.reloadData()
                 case let .update(_, deletions, insertions, modifications):
                     print(deletions)
                     print(insertions)
                     print(modifications)
+                    
+                    self?.tableView.beginUpdates()
+                    self?.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .none)
+                    self?.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .none)
+                    self?.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .none)
+                    self?.tableView.endUpdates()
                 }
             }
         } catch {
@@ -73,9 +79,18 @@ class MyGroupsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let group = groupsResult[indexPath.row]
         if editingStyle == .delete {
-            myGroups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.delete(group.self)
+                try realm.commitWrite()
+//            myGroups.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print(error)
+            }
         }
     }
 

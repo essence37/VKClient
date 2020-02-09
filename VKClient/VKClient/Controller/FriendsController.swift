@@ -51,6 +51,7 @@ class FriendsController: UITableViewController {
             switch result {
             case .success(let friends):
                 self?.friends = friends
+                self?.sortedFriends = (self?.sort(friends: friends))!
 //                self?.database.saveUserData(user: friends)
                 self?.tableView.reloadData()
             case .failure(let error): break
