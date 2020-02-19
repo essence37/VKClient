@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		191AF41E261A76E36A693FA3 /* Pods_VKClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4406B9B116C57512936EBC /* Pods_VKClient.framework */; };
+		B0594AD123FB0BFF00F2C4E6 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0594AD023FB0BFF00F2C4E6 /* NewsItem.swift */; };
 		F40A809B23E1FBF500C17708 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A809A23E1FBF500C17708 /* GroupRepository.swift */; };
 		F41494772389D21E005C55E3 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494762389D21E005C55E3 /* LoadView.swift */; };
 		F41494792389D380005C55E3 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494782389D380005C55E3 /* LoadViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		7F4406B9B116C57512936EBC /* Pods_VKClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95815F7C5FB271264D53C26A /* Pods-VKClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKClient.debug.xcconfig"; path = "Target Support Files/Pods-VKClient/Pods-VKClient.debug.xcconfig"; sourceTree = "<group>"; };
+		B0594AD023FB0BFF00F2C4E6 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		F40A809A23E1FBF500C17708 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		F41494762389D21E005C55E3 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		F41494782389D380005C55E3 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				F49374A7236379670056C8F3 /* Friend.swift */,
 				F49374AB236387EA0056C8F3 /* Groups.swift */,
+				B0594AD023FB0BFF00F2C4E6 /* NewsItem.swift */,
 				F4B0BD0F23CA51040031A10D /* Session.swift */,
 				F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */,
 			);
@@ -376,6 +379,7 @@
 				F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */,
 				F41494792389D380005C55E3 /* LoadViewController.swift in Sources */,
 				F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */,
+				B0594AD123FB0BFF00F2C4E6 /* NewsItem.swift in Sources */,
 				F4FF3FF923E4ABA700FF2051 /* CommonResponse.swift in Sources */,
 				F45378F323CE3728005C22C3 /* NewLoginController.swift in Sources */,
 				F49374AC236387EA0056C8F3 /* Groups.swift in Sources */,
@@ -536,6 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUN64ZVFJ6;
 				INFOPLIST_FILE = VKClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,6 +560,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUN64ZVFJ6;
 				INFOPLIST_FILE = VKClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

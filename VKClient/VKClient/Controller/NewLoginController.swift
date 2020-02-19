@@ -41,7 +41,7 @@ class NewLoginController: UIViewController {
         urlComponent.queryItems = [URLQueryItem(name: "client_id", value: appId),
                                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
                                    URLQueryItem(name: "display", value: "mobile"),
-                                   URLQueryItem(name: "scope", value: "friends"),
+                                   URLQueryItem(name: "scope", value: "wall,photos,offline,friends,stories,status,groups"),
                                    URLQueryItem(name: "response_type", value: "token"),
                                    URLQueryItem(name: "v", value: "5.103")]
         
@@ -49,10 +49,10 @@ class NewLoginController: UIViewController {
         webview.load(request)
 //        view = webView
         
-        
+//        webview.configuration.websiteDataStore.httpCookieStore.getAllCookies { [weak self] cookies in
+//            cookies.forEach { self?.webView.configuration.websiteDataStore.httpCookieStore.delete($0) }
+//        }
     }
-     
-    
 }
 
 // MARK: - Отслеживание перехода пользователя на другую страницу.
@@ -85,13 +85,12 @@ extension NewLoginController: WKNavigationDelegate {
         Session.instance.userId = Int(params["user_id"]!) ?? 0
     
 //        vkApi.getFriendList(token: Session.instance.token)
-
+        VKApi().fetchNews()
         
         performSegue(withIdentifier: "Login Segue", sender: nil)
         
         decisionHandler(.cancel)
 
     }
-    
 }
 

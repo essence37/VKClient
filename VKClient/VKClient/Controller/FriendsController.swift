@@ -24,18 +24,7 @@ class FriendsController: UITableViewController {
     
     var vkApi = VKApi()
     var database = UserRepository()
-    var friends = [User
-//// было Friend(image: UIImage(named: "Rachel")!, name: "Rachel Green"),
-//        Friend(image: (UIImage(named: "Rachel")!), name: "Rachel Green"),
-//        Friend(image: (UIImage(named: "Monica")!), name: "Monica Geller-Bing"),
-//        Friend(image: (UIImage(named: "Phoebe")!), name: "Phoebe Buffay"),
-//        Friend(image: (UIImage(named: "Joey")!), name: "Joey Tribbiani"),
-//        Friend(image: (UIImage(named: "Chandler")!), name: "Chandler Bing"),
-//        Friend(image: (UIImage(named: "Ross")!), name: "Ross Geller"),
-//        
-////        ниже: так будет выглядеть с галереей-массивом фотографий, фото f1 f2 загружены в Assets
-////        User(image: (UIImage(named: "Ross")!), name: "Ross Geller", photos: [(UIImage(named: "f1")!),(UIImage(named: "f2")!)])
-    ]()
+    var friends = [User]()
     
 //    let friends = UserResponse.toUser.self
     

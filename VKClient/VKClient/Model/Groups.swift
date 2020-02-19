@@ -8,15 +8,22 @@
 
 import UIKit
 import RealmSwift
+import SwiftyJSON
 
-struct GroupItems: Decodable {
-    var id: Int
-    var name: String
-    var photo: String
+struct GroupItem: Decodable {
+    let id: Int
+    let name: String
+    let photo: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case photo = "photo_100"
+    }
+    
+    init(json: JSON) {
+        self.id = json["id"].intValue
+        self.name = json["name"].stringValue
+        self.photo = json["photo_100"].string ?? json["photo_50"].stringValue
     }
 }

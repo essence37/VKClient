@@ -9,34 +9,13 @@
 import Foundation
 import Alamofire
 import RealmSwift
+import SwiftyJSON
 
 class VKApi {
     
     enum RequestError: Error {
         case decodableError
     }
-    
-//    func getFriendList(token: String) {
-//
-//        let configuration = URLSessionConfiguration.default
-//        let session = URLSession(configuration: configuration)
-//        var urlConstructor = URLComponents()
-//        urlConstructor.scheme = "https"
-//        urlConstructor.host = "api.vk.com"
-//        urlConstructor.path = "/method/friends.get"
-//        urlConstructor.queryItems = [URLQueryItem(name: "v", value: "5.103"),
-//                                     URLQueryItem(name: "access_token", value: token),
-//                                     URLQueryItem(name: "order", value: "name"),
-//                                     URLQueryItem(name: "fields", value: "last_seen")]
-//        var request = URLRequest(url: urlConstructor.url!)
-//        request.httpMethod = "POST"
-//        let task = session.dataTask(with: request) { (data, response,error) in
-//            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-//           print(json)
-//        }
-//        task.resume()
-//      }
-        
         // MARK: - Универсальная функция для формирования запроса.
         
     func vkApiConfigurator(_ apiMethod:String) -> URL? {
@@ -78,6 +57,34 @@ class VKApi {
             ]
             
         sendRequest(requestURL: vkApiConfigurator("groups.get")!, method: .post, parameters: parameters) { completion($0) }
+    }
+    
+    // newsfeed.get
+    func fetchNews() {
+        let base = "https://api.vk.com/method/"
+        let method = "newsfeed.get"
+        
+        let params: Parameters = [
+            "access_token": Session.instance.token,
+            "v": "5.103",
+            "filters": "post",
+            "return_banned": 0,
+            "count": 50,
+            "fields": "nickname,photo_50"
+        ]
+        
+        AF.request(base + method, method: .get, parameters: params).responseJSON { response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
+//                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
+                let newsItems = json["response"]["items"].arrayValue.map(NewsItem.init)
+                
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }
 

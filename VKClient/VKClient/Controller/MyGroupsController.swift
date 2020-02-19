@@ -22,6 +22,8 @@ class MyGroupsController: UITableViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
         
+        tableView.prefetchDataSource = self
+        
         showGroups()
     }
 
@@ -106,4 +108,10 @@ class MyGroupsController: UITableViewController {
     }
 
 
+}
+
+extension MyGroupsController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print(indexPaths.map { $0.item })
+    }
 }
