@@ -9,10 +9,18 @@
 import UIKit
 
 class NewsViewController: UITableViewController {
-
+    
+    // Инициализация класса VKApi.
+    var vkApi = VKApi()
+    // Массив новостей.
+    var news = [NewsItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        vkApi.loadNewsData(token: Session.instance.token)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
