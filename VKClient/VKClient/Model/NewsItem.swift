@@ -6,15 +6,16 @@
 //  Copyright © 2020 Пазин Даниил. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyJSON
+import RealmSwift
 
-class NewsItem {
+class NewsItem: Object {
     let id: Int
     let text: String
     let photos: [Photo]
     
-    init(json: JSON) {
+    required init(json: JSON) {
         let photoAttachments = json["attachments"].arrayValue.filter { $0["type"] == "photo" }.map(Photo.init)
         self.photos = photoAttachments
         self.id = json["post_id"].intValue
