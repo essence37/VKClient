@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
 class NewsViewController: UITableViewController {
-    
+
+// MARK: - Variables And Properties
     // Инициализация класса VKApi.
     var vkApi = VKApi()
+    //
+    let realm = try! Realm()
     // Массив новостей.
     var news = [NewsItem]()
     
@@ -19,13 +24,7 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
 
         vkApi.loadNewsData(token: Session.instance.token)
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        addNews()
     }
 
     // MARK: - Table view data source
@@ -37,17 +36,28 @@ class NewsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return news.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsViewCell", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsViewCell", for: indexPath) as! NewsViewCell
+        
+        let news: NewsItem = self.news[indexPath.row]
+        cell.newsTextLabel.text = news.text
+        cell.newsImageView.kf.setImage(with: URL(string: news.photos.first?.url ?? "Ooops"))
 
         return cell
     }
 
+    // Добавление новостей в массив news.
+    func addNews() {
+        let allNews = self.realm.objects(NewsItem.self)
+        for i in 0...100 {
+            let news = allNews[i]
+            self.news.append(news)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

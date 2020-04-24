@@ -68,21 +68,22 @@ class VKApi {
             "count": 50,
             "fields": "nickname,photo_100"
         ]
-       
-        AF.request(vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON { response in
-            switch response.result {
-            case let .success(value):
-                let json = JSON(value)
-                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
-                //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
-                self.news = json["response"]["items"].arrayValue.map(NewsItem.init)
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(self.news)
+        DispatchQueue.global(qos: .utility).async {
+            AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON { response in
+                switch response.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
+                    //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
+                    self.news = json["response"]["items"].arrayValue.map(NewsItem.init)
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.add(self.news)
+                    }
+                //                print(realm.configuration.fileURL)
+                case let .failure(error):
+                    print(error)
                 }
-                print(realm.configuration.fileURL)
-            case let .failure(error):
-                print(error)
             }
         }
     }

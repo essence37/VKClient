@@ -10,9 +10,8 @@ import UIKit
 
 class NewsViewCell: UITableViewCell {
 
-    @IBOutlet weak var userAvatarImageView: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var newsTextLabel: UILabel!
+    @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var likeControl: UIControl!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!

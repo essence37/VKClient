@@ -11,28 +11,37 @@ import SwiftyJSON
 import RealmSwift
 
 class NewsItem: Object {
-    let id: Int
-    let text: String
-    let photos: [Photo]
+    @objc dynamic var id: Int = 0
+    @objc dynamic var text: String = String()
+    var photos: List<Photo> = .init()
     
-    required init(json: JSON) {
+    init(json: JSON) {
         let photoAttachments = json["attachments"].arrayValue.filter { $0["type"] == "photo" }.map(Photo.init)
-        self.photos = photoAttachments
+        self.photos.removeAll()
+        self.photos.append(objectsIn: photoAttachments)
         self.id = json["post_id"].intValue
         self.text = json["text"].stringValue
     }
+    
+    required init() {
+        super.init()
+    }
 }
 
-class Photo {
-    let id: Int
-    let url: URL?
+class Photo: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var url: String?
     
     init(json: JSON) {
         self.id = json["photo"]["id"].intValue
         if let urlString = json["photo"]["sizes"].arrayValue.last?["url"].string {
-            self.url = URL(string: urlString)
+            self.url = urlString
         } else {
             self.url = nil
         }
+    }
+    
+    required init() {
+        super.init()
     }
 }
