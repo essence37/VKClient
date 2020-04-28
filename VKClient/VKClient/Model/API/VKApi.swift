@@ -11,9 +11,23 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class VKApi {
-    //
-    var news = [NewsItem]()
+class VKApi: AsyncOperation {
+    
+    var requestURL: URL
+    var method: HTTPMethod
+    var parameters: Parameters
+    var request: DataRequest
+    
+    init(parameters: Parameters, requestURL: URL, method: HTTPMethod) {
+        self.requestURL = requestURL
+        self.method = method
+        self.parameters = parameters
+        request = AF.request(requestURL, method: method, parameters: parameters)
+    }
+    
+    override func cancel() {
+        request.cancel()
+    }
     
     enum RequestError: Error {
         case decodableError
@@ -27,7 +41,7 @@ class VKApi {
     }
     // Универсальная функция для формирования запроса.
     func sendRequest<T: Decodable>(requestURL: URL, method: HTTPMethod = .get, parameters: Parameters, completion: @escaping (Result<[T], Error>) -> Void) {
-        AF.request(requestURL, method: method, parameters: parameters).responseData { response in
+        request.responseData { response in
             guard let data = response.value else { return }
             
             do {
@@ -37,6 +51,7 @@ class VKApi {
                 completion(.failure(RequestError.decodableError))
             }
         }
+        self.state = .finished
     }
     // Запрос данных друзей.
     func loadUserData(token: String, completion: @escaping (Result<[User], Error>) -> Void) {
@@ -68,6 +83,8 @@ class VKApi {
             "count": 50,
             "fields": "nickname,photo_100"
         ]
+        //
+        var news = [NewsItem]()
         DispatchQueue.global(qos: .utility).async {
             AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON { response in
                 switch response.result {
@@ -75,10 +92,10 @@ class VKApi {
                     let json = JSON(value)
                     //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
                     //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
-                    self.news = json["response"]["items"].arrayValue.map(NewsItem.init)
+                    news = json["response"]["items"].arrayValue.map(NewsItem.init)
                     let realm = try! Realm()
                     try! realm.write {
-                        realm.add(self.news)
+                        realm.add(news)
                     }
                 //                print(realm.configuration.fileURL)
                 case let .failure(error):

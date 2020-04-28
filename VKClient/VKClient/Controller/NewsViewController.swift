@@ -14,7 +14,12 @@ class NewsViewController: UITableViewController {
 
 // MARK: - Variables And Properties
     // Инициализация класса VKApi.
-    var vkApi = VKApi()
+    var vkApi = VKApi(parameters: [
+        "access_token": "8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277",
+        "v": "5.103",
+        "order": "name",
+        "fields": "photo_100"
+    ], requestURL: URL(string:"https://api.vk.com/method/friends.get")!, method: .post)
     //
     let realm = try! Realm()
     // Массив новостей.
@@ -52,7 +57,7 @@ class NewsViewController: UITableViewController {
     // Добавление новостей в массив news.
     func addNews() {
         let allNews = self.realm.objects(NewsItem.self)
-        for i in 0...100 {
+        for i in 0..<allNews.count {
             let news = allNews[i]
             self.news.append(news)
         }

@@ -19,7 +19,12 @@ class AllGroupsController: UITableViewController {
     }
     
     var database = GroupRepository()
-    var vkApi = VKApi()
+    var vkApi = VKApi(parameters: [
+        "access_token": "8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277",
+        "v": "5.103",
+        "order": "name",
+        "fields": "photo_100"
+    ], requestURL: URL(string:"https://api.vk.com/method/friends.get")!, method: .post)
     var groups = [GroupsRealm]()
     
     

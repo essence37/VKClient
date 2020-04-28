@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
 
 class FriendsController: UITableViewController {
     
@@ -22,7 +23,12 @@ class FriendsController: UITableViewController {
         }
     }
     
-    var vkApi = VKApi()
+    var vkApi = VKApi(parameters: [
+        "access_token": Session.instance.token,
+        "v": "5.103",
+        "order": "name",
+        "fields": "photo_100"
+    ], requestURL: URL(string:"https://api.vk.com/method/friends.get")!, method: .post)
     var database = UserRepository()
     var friends = [User]()
     
@@ -31,7 +37,7 @@ class FriendsController: UITableViewController {
     var sortedFriends = [Character: [User]]()
     
     override func viewDidLoad() {
-           
+        
         tableView.register(UINib(nibName: "FriendXibCell", bundle: nil), forCellReuseIdentifier: "FriendXibCell")
         
         self.sortedFriends = sort(friends: friends)

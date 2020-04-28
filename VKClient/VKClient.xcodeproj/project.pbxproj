@@ -24,6 +24,9 @@
 		F45378F323CE3728005C22C3 /* NewLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45378F223CE3728005C22C3 /* NewLoginController.swift */; };
 		F460871B23870FD0006C40F1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871A23870FD0006C40F1 /* NewsViewController.swift */; };
 		F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871C23871125006C40F1 /* NewsViewCell.swift */; };
+		F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */; };
+		F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C024575D34000E3E29 /* GetDataOperation.swift */; };
+		F47EE1C424576180000E3E29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C324576180000E3E29 /* Post.swift */; };
 		F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A1236367DB0056C8F3 /* MyGroupsController.swift */; };
 		F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A32363681C0056C8F3 /* FriendsController.swift */; };
 		F49374A8236379670056C8F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A7236379670056C8F3 /* Friend.swift */; };
@@ -63,6 +66,9 @@
 		F45378F223CE3728005C22C3 /* NewLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginController.swift; sourceTree = "<group>"; };
 		F460871A23870FD0006C40F1 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		F460871C23871125006C40F1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		F47EE1C024575D34000E3E29 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		F47EE1C324576180000E3E29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F49374A1236367DB0056C8F3 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		F49374A32363681C0056C8F3 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		F49374A7236379670056C8F3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -152,9 +158,20 @@
 			path = FriendsViews;
 			sourceTree = "<group>";
 		};
+		F47EE1C2245760CD000E3E29 /* OperationQueue */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */,
+				F47EE1C024575D34000E3E29 /* GetDataOperation.swift */,
+				F47EE1C324576180000E3E29 /* Post.swift */,
+			);
+			path = OperationQueue;
+			sourceTree = "<group>";
+		};
 		F48DC28F23669F8900D2DC49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F47EE1C2245760CD000E3E29 /* OperationQueue */,
 				F4E7244023D33907006DBACC /* API */,
 				F40A809A23E1FBF500C17708 /* GroupRepository.swift */,
 				F43EC11023D37068002267B8 /* GroupsRealm.swift */,
@@ -379,6 +396,7 @@
 				F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */,
 				F42AEB6D235E258D00CA08D1 /* UIViewController+Extensions.swift in Sources */,
 				F43EC11123D37068002267B8 /* GroupsRealm.swift in Sources */,
+				F47EE1C424576180000E3E29 /* Post.swift in Sources */,
 				F49374AE236388C20056C8F3 /* AllGroupsController.swift in Sources */,
 				F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */,
 				F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */,
@@ -394,6 +412,8 @@
 				F4F0EF5E235A41C7003410B9 /* AppDelegate.swift in Sources */,
 				F4F0EF60235A41C7003410B9 /* SceneDelegate.swift in Sources */,
 				F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */,
+				F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */,
+				F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */,
 				F4B0BD1023CA51040031A10D /* Session.swift in Sources */,
 				F460871B23870FD0006C40F1 /* NewsViewController.swift in Sources */,
 				F49374A8236379670056C8F3 /* Friend.swift in Sources */,
