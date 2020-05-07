@@ -12,6 +12,8 @@
 		F40A809B23E1FBF500C17708 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A809A23E1FBF500C17708 /* GroupRepository.swift */; };
 		F41494772389D21E005C55E3 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494762389D21E005C55E3 /* LoadView.swift */; };
 		F41494792389D380005C55E3 /* AnimationLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494782389D380005C55E3 /* AnimationLoadViewController.swift */; };
+		F417B189246472FA00A067EF /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417B188246472FA00A067EF /* ParseData.swift */; };
+		F417B18B246477B700A067EF /* ReloadTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417B18A246477B700A067EF /* ReloadTableController.swift */; };
 		F421679E23DDF6A100F600D3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421679D23DDF6A100F600D3 /* UserRepository.swift */; };
 		F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA08236626010020B95A /* MyFriendProfileController.swift */; };
 		F429DA0B2366271B0020B95A /* FriendProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA0A2366271B0020B95A /* FriendProfileCell.swift */; };
@@ -26,7 +28,6 @@
 		F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871C23871125006C40F1 /* NewsViewCell.swift */; };
 		F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */; };
 		F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C024575D34000E3E29 /* GetDataOperation.swift */; };
-		F47EE1C424576180000E3E29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C324576180000E3E29 /* Post.swift */; };
 		F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A1236367DB0056C8F3 /* MyGroupsController.swift */; };
 		F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A32363681C0056C8F3 /* FriendsController.swift */; };
 		F49374A8236379670056C8F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A7236379670056C8F3 /* Friend.swift */; };
@@ -54,6 +55,8 @@
 		F40A809A23E1FBF500C17708 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		F41494762389D21E005C55E3 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		F41494782389D380005C55E3 /* AnimationLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoadViewController.swift; sourceTree = "<group>"; };
+		F417B188246472FA00A067EF /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
+		F417B18A246477B700A067EF /* ReloadTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadTableController.swift; sourceTree = "<group>"; };
 		F421679D23DDF6A100F600D3 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F429DA08236626010020B95A /* MyFriendProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendProfileController.swift; sourceTree = "<group>"; };
 		F429DA0A2366271B0020B95A /* FriendProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCell.swift; sourceTree = "<group>"; };
@@ -68,7 +71,6 @@
 		F460871C23871125006C40F1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		F47EE1C024575D34000E3E29 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
-		F47EE1C324576180000E3E29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F49374A1236367DB0056C8F3 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		F49374A32363681C0056C8F3 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		F49374A7236379670056C8F3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -163,7 +165,9 @@
 			children = (
 				F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */,
 				F47EE1C024575D34000E3E29 /* GetDataOperation.swift */,
-				F47EE1C324576180000E3E29 /* Post.swift */,
+				F49374AB236387EA0056C8F3 /* GroupsItem.swift */,
+				F417B188246472FA00A067EF /* ParseData.swift */,
+				F417B18A246477B700A067EF /* ReloadTableController.swift */,
 			);
 			path = OperationQueue;
 			sourceTree = "<group>";
@@ -175,7 +179,6 @@
 				F4E7244023D33907006DBACC /* API */,
 				F40A809A23E1FBF500C17708 /* GroupRepository.swift */,
 				F43EC11023D37068002267B8 /* GroupsRealm.swift */,
-				F49374AB236387EA0056C8F3 /* GroupsItem.swift */,
 				F421679D23DDF6A100F600D3 /* UserRepository.swift */,
 				F4BFE28B23D376A2002D27AD /* User.swift */,
 				F49374A7236379670056C8F3 /* Friend.swift */,
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F417B189246472FA00A067EF /* ParseData.swift in Sources */,
 				F41494772389D21E005C55E3 /* LoadView.swift in Sources */,
 				F49374AA236386D30056C8F3 /* GroupCell.swift in Sources */,
 				F421679E23DDF6A100F600D3 /* UserRepository.swift in Sources */,
@@ -396,7 +400,6 @@
 				F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */,
 				F42AEB6D235E258D00CA08D1 /* UIViewController+Extensions.swift in Sources */,
 				F43EC11123D37068002267B8 /* GroupsRealm.swift in Sources */,
-				F47EE1C424576180000E3E29 /* Post.swift in Sources */,
 				F49374AE236388C20056C8F3 /* AllGroupsController.swift in Sources */,
 				F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */,
 				F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */,
@@ -411,6 +414,7 @@
 				F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */,
 				F4F0EF5E235A41C7003410B9 /* AppDelegate.swift in Sources */,
 				F4F0EF60235A41C7003410B9 /* SceneDelegate.swift in Sources */,
+				F417B18B246477B700A067EF /* ReloadTableController.swift in Sources */,
 				F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */,
 				F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */,
 				F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */,

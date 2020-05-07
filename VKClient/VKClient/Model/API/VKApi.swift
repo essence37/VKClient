@@ -11,23 +11,7 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class VKApi: AsyncOperation {
-    
-    var requestURL: URL
-    var method: HTTPMethod
-    var parameters: Parameters
-    var request: DataRequest
-    
-    init(parameters: Parameters, requestURL: URL, method: HTTPMethod) {
-        self.requestURL = requestURL
-        self.method = method
-        self.parameters = parameters
-        request = AF.request(requestURL, method: method, parameters: parameters)
-    }
-    
-    override func cancel() {
-        request.cancel()
-    }
+class VKApi {
     
     enum RequestError: Error {
         case decodableError
@@ -41,7 +25,7 @@ class VKApi: AsyncOperation {
     }
     // Универсальная функция для формирования запроса.
     func sendRequest<T: Decodable>(requestURL: URL, method: HTTPMethod = .get, parameters: Parameters, completion: @escaping (Result<[T], Error>) -> Void) {
-        request.responseData { response in
+        AF.request(requestURL, method: method, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             
             do {
@@ -51,7 +35,6 @@ class VKApi: AsyncOperation {
                 completion(.failure(RequestError.decodableError))
             }
         }
-        self.state = .finished
     }
     // Запрос данных друзей.
     func loadUserData(token: String, completion: @escaping (Result<[User], Error>) -> Void) {

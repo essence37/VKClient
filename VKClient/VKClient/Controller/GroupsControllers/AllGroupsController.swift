@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import RealmSwift
+import Alamofire
 
 class AllGroupsController: UITableViewController {
 
@@ -19,13 +20,8 @@ class AllGroupsController: UITableViewController {
     }
     
     var database = GroupRepository()
-    var vkApi = VKApi(parameters: [
-        "access_token": "8427888c71a913e6e460d2a21d87bf002b0e277fea43a511f6b8f99d196e906cdd8544b787bd55a37e277",
-        "v": "5.103",
-        "order": "name",
-        "fields": "photo_100"
-    ], requestURL: URL(string:"https://api.vk.com/method/friends.get")!, method: .post)
-    var groups = [GroupsRealm]()
+    var vkApi = VKApi()
+    var groups = [GroupItem]()
     
     
 //    let groups = [
@@ -37,22 +33,45 @@ class AllGroupsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let opq = OperationQueue()
+        let parameters: Parameters = [
+            "access_token": Session.instance.token,
+            "v": "5.103",
+            "extended": "1",
+            "fields": "photo_100, name"
+        ]
+        let request = AF.request("https://api.vk.com/method/groups.get", method: .get, parameters: parameters)
+        let getDataOperation = GetDataOperation(request: request)
+        opq.addOperation(getDataOperation)
+        
+        let parseData = ParseData()
+        parseData.addDependency(getDataOperation)
+        opq.addOperation(parseData)
+        
+        let reloadTableController = ReloadTableController(controller: self)
+        reloadTableController.addDependency(parseData)
+        OperationQueue.main.addOperation(reloadTableController)
+        
+        
+        
 
-        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
-            switch groups {
-            case .success(let groups):
-                self?.groups = groups
-                self?.database.addGroups(groups: groups)
-                self?.tableView.reloadData()
-            case .failure(let error): break
-            }
-        }
+//        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
+//            switch groups {
+//            case .success(let groups):
+//                self?.groups = groups
+//                self?.database.addGroups(groups: groups)
+//                self?.tableView.reloadData()
+//            case .failure(let error): break
+//            }
+//        }
         
         self.filteredGroups = self.groups
         
     }
 
-    var filteredGroups = [GroupsRealm]()
+    var filteredGroups = [GroupItem]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

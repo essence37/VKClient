@@ -23,12 +23,7 @@ class FriendsController: UITableViewController {
         }
     }
     
-    var vkApi = VKApi(parameters: [
-        "access_token": Session.instance.token,
-        "v": "5.103",
-        "order": "name",
-        "fields": "photo_100"
-    ], requestURL: URL(string:"https://api.vk.com/method/friends.get")!, method: .post)
+    var vkApi = VKApi()
     var database = UserRepository()
     var friends = [User]()
     
