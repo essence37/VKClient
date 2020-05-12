@@ -22,26 +22,18 @@ class AllGroupsController: UITableViewController {
     var database = GroupRepository()
     var vkApi = VKApi()
     var groups = [GroupItem]()
-    
-    
-//    let groups = [
-//        Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
-//        Group(image: UIImage(named: "Science")!, name: "Science"),
-//        Group(image: UIImage(named: "Stand up")!, name: "Stand up"),
-//        Group(image: UIImage(named: "ITNews")!, name: "ITNews"),
-//    ]
+    var filteredGroups = [GroupItem]()
+    let opq = OperationQueue()
+    let parameters: Parameters = [
+        "access_token": Session.instance.token,
+        "v": "5.103",
+        "extended": "1",
+        "fields": "photo_100, name"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let opq = OperationQueue()
-        let parameters: Parameters = [
-            "access_token": Session.instance.token,
-            "v": "5.103",
-            "extended": "1",
-            "fields": "photo_100, name"
-        ]
         let request = AF.request("https://api.vk.com/method/groups.get", method: .get, parameters: parameters)
         let getDataOperation = GetDataOperation(request: request)
         opq.addOperation(getDataOperation)
@@ -54,24 +46,19 @@ class AllGroupsController: UITableViewController {
         reloadTableController.addDependency(parseData)
         OperationQueue.main.addOperation(reloadTableController)
         
-        
-        
-
-//        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
-//            switch groups {
-//            case .success(let groups):
-//                self?.groups = groups
-//                self?.database.addGroups(groups: groups)
-//                self?.tableView.reloadData()
-//            case .failure(let error): break
-//            }
-//        }
+        // Старый способ получения данных.
+        /*vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
+            switch groups {
+            case .success(let groups):
+                self?.groups = groups
+                self?.database.addGroups(groups: groups)
+                self?.tableView.reloadData()
+            case .failure(let error): break
+            }
+        }*/
         
         self.filteredGroups = self.groups
-        
     }
-
-    var filteredGroups = [GroupItem]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

@@ -24,6 +24,7 @@ class FriendsController: UITableViewController {
     }
     
     var vkApi = VKApi()
+    var promise = Future()
     var database = UserRepository()
     var friends = [User]()
     
@@ -47,6 +48,7 @@ class FriendsController: UITableViewController {
             case .failure(_): break
             }
         }
+        
 
     }
     

@@ -28,6 +28,7 @@
 		F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871C23871125006C40F1 /* NewsViewCell.swift */; };
 		F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */; };
 		F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C024575D34000E3E29 /* GetDataOperation.swift */; };
+		F487D0A2246AC32700AAECB4 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487D0A1246AC32700AAECB4 /* Promise.swift */; };
 		F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A1236367DB0056C8F3 /* MyGroupsController.swift */; };
 		F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A32363681C0056C8F3 /* FriendsController.swift */; };
 		F49374A8236379670056C8F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A7236379670056C8F3 /* Friend.swift */; };
@@ -71,6 +72,7 @@
 		F460871C23871125006C40F1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		F47EE1C024575D34000E3E29 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		F487D0A1246AC32700AAECB4 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		F49374A1236367DB0056C8F3 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		F49374A32363681C0056C8F3 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		F49374A7236379670056C8F3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		F4E7244023D33907006DBACC /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F487D0A1246AC32700AAECB4 /* Promise.swift */,
 				F4E7243E23D3014F006DBACC /* VKApi.swift */,
 			);
 			path = API;
@@ -395,6 +398,7 @@
 				F49374AA236386D30056C8F3 /* GroupCell.swift in Sources */,
 				F421679E23DDF6A100F600D3 /* UserRepository.swift in Sources */,
 				F446D58723713ADF00A1EE56 /* LikeControl.swift in Sources */,
+				F487D0A2246AC32700AAECB4 /* Promise.swift in Sources */,
 				F4BFE28C23D376A2002D27AD /* User.swift in Sources */,
 				F40A809B23E1FBF500C17708 /* GroupRepository.swift in Sources */,
 				F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */,

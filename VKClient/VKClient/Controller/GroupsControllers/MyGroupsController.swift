@@ -106,8 +106,6 @@ class MyGroupsController: UITableViewController {
             }
         }
     }
-
-
 }
 
 extension MyGroupsController: UITableViewDataSourcePrefetching {
