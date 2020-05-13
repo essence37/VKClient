@@ -27,6 +27,7 @@ class FriendsController: UITableViewController {
     var promise = Future()
     var database = UserRepository()
     var friends = [User]()
+    lazy var photoCache = PhotoService(container: self.tableView)
     
 //    let friends = UserResponse.toUser.self
     
@@ -102,8 +103,10 @@ class FriendsController: UITableViewController {
         cell.friendNameLabel.text = friend.lastName
         
         // Отобразить картинку с помощью Kingfisher
-        let url = URL(string: friend.photo)
-        cell.friendImageView.kf.setImage(with: url)
+        /*let url = URL(string: friend.photo)
+          cell.friendImageView.kf.setImage(with: url)*/
+        // Реализация кэширования картинок.
+        cell.friendImageView.image = photoCache.photo(atIndexpath: indexPath, byUrl: friend.photo)
         
         return cell
     }
