@@ -12,6 +12,8 @@
 		F40A809B23E1FBF500C17708 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A809A23E1FBF500C17708 /* GroupRepository.swift */; };
 		F41494772389D21E005C55E3 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494762389D21E005C55E3 /* LoadView.swift */; };
 		F41494792389D380005C55E3 /* AnimationLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41494782389D380005C55E3 /* AnimationLoadViewController.swift */; };
+		F417B189246472FA00A067EF /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417B188246472FA00A067EF /* ParseData.swift */; };
+		F417B18B246477B700A067EF /* ReloadTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F417B18A246477B700A067EF /* ReloadTableController.swift */; };
 		F421679E23DDF6A100F600D3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421679D23DDF6A100F600D3 /* UserRepository.swift */; };
 		F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA08236626010020B95A /* MyFriendProfileController.swift */; };
 		F429DA0B2366271B0020B95A /* FriendProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429DA0A2366271B0020B95A /* FriendProfileCell.swift */; };
@@ -21,9 +23,13 @@
 		F446D58723713ADF00A1EE56 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446D58623713ADF00A1EE56 /* LikeControl.swift */; };
 		F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E504F2379DD800003B96B /* FriendXibCell.swift */; };
 		F44E50522379DD800003B96B /* FriendXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44E50502379DD800003B96B /* FriendXibCell.xib */; };
+		F452A093246C26E70097AD8C /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F452A092246C26E70097AD8C /* PhotoService.swift */; };
 		F45378F323CE3728005C22C3 /* NewLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45378F223CE3728005C22C3 /* NewLoginController.swift */; };
 		F460871B23870FD0006C40F1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871A23870FD0006C40F1 /* NewsViewController.swift */; };
 		F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F460871C23871125006C40F1 /* NewsViewCell.swift */; };
+		F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */; };
+		F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EE1C024575D34000E3E29 /* GetDataOperation.swift */; };
+		F487D0A2246AC32700AAECB4 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487D0A1246AC32700AAECB4 /* Promise.swift */; };
 		F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A1236367DB0056C8F3 /* MyGroupsController.swift */; };
 		F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A32363681C0056C8F3 /* FriendsController.swift */; };
 		F49374A8236379670056C8F3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374A7236379670056C8F3 /* Friend.swift */; };
@@ -32,7 +38,7 @@
 		F49374AE236388C20056C8F3 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49374AD236388C20056C8F3 /* AllGroupsController.swift */; };
 		F4B0BD1023CA51040031A10D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0BD0F23CA51040031A10D /* Session.swift */; };
 		F4BFE28C23D376A2002D27AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BFE28B23D376A2002D27AD /* User.swift */; };
-		F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7243E23D3014F006DBACC /* VKApi.swift */; };
+		F4E7243F23D3014F006DBACC /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7243E23D3014F006DBACC /* VKAPI.swift */; };
 		F4F0EF5E235A41C7003410B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0EF5D235A41C7003410B9 /* AppDelegate.swift */; };
 		F4F0EF60235A41C7003410B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0EF5F235A41C7003410B9 /* SceneDelegate.swift */; };
 		F4F0EF62235A41C7003410B9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0EF61235A41C7003410B9 /* LoginController.swift */; };
@@ -51,6 +57,8 @@
 		F40A809A23E1FBF500C17708 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		F41494762389D21E005C55E3 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		F41494782389D380005C55E3 /* AnimationLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoadViewController.swift; sourceTree = "<group>"; };
+		F417B188246472FA00A067EF /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
+		F417B18A246477B700A067EF /* ReloadTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadTableController.swift; sourceTree = "<group>"; };
 		F421679D23DDF6A100F600D3 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F429DA08236626010020B95A /* MyFriendProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendProfileController.swift; sourceTree = "<group>"; };
 		F429DA0A2366271B0020B95A /* FriendProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCell.swift; sourceTree = "<group>"; };
@@ -60,9 +68,13 @@
 		F446D58623713ADF00A1EE56 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		F44E504F2379DD800003B96B /* FriendXibCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendXibCell.swift; sourceTree = "<group>"; };
 		F44E50502379DD800003B96B /* FriendXibCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendXibCell.xib; sourceTree = "<group>"; };
+		F452A092246C26E70097AD8C /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		F45378F223CE3728005C22C3 /* NewLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginController.swift; sourceTree = "<group>"; };
 		F460871A23870FD0006C40F1 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		F460871C23871125006C40F1 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		F47EE1C024575D34000E3E29 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		F487D0A1246AC32700AAECB4 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		F49374A1236367DB0056C8F3 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		F49374A32363681C0056C8F3 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		F49374A7236379670056C8F3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -71,7 +83,7 @@
 		F49374AD236388C20056C8F3 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
 		F4B0BD0F23CA51040031A10D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F4BFE28B23D376A2002D27AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F4E7243E23D3014F006DBACC /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		F4E7243E23D3014F006DBACC /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
 		F4F0EF5A235A41C7003410B9 /* VKClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F0EF5D235A41C7003410B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F0EF5F235A41C7003410B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,13 +164,27 @@
 			path = FriendsViews;
 			sourceTree = "<group>";
 		};
+		F47EE1C2245760CD000E3E29 /* OperationQueue */ = {
+			isa = PBXGroup;
+			children = (
+				F47EE1BE24574C40000E3E29 /* AsyncOperation.swift */,
+				F47EE1C024575D34000E3E29 /* GetDataOperation.swift */,
+				F49374AB236387EA0056C8F3 /* GroupsItem.swift */,
+				F417B188246472FA00A067EF /* ParseData.swift */,
+				F417B18A246477B700A067EF /* ReloadTableController.swift */,
+			);
+			path = OperationQueue;
+			sourceTree = "<group>";
+		};
 		F48DC28F23669F8900D2DC49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F4E7244023D33907006DBACC /* API */,
+				F47EE1C2245760CD000E3E29 /* OperationQueue */,
+				F487D0A1246AC32700AAECB4 /* Promise.swift */,
+				F452A092246C26E70097AD8C /* PhotoService.swift */,
+				F4E7243E23D3014F006DBACC /* VKAPI.swift */,
 				F40A809A23E1FBF500C17708 /* GroupRepository.swift */,
 				F43EC11023D37068002267B8 /* GroupsRealm.swift */,
-				F49374AB236387EA0056C8F3 /* GroupsItem.swift */,
 				F421679D23DDF6A100F600D3 /* UserRepository.swift */,
 				F4BFE28B23D376A2002D27AD /* User.swift */,
 				F49374A7236379670056C8F3 /* Friend.swift */,
@@ -209,14 +235,6 @@
 				F4F0EF68235A41C7003410B9 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		F4E7244023D33907006DBACC /* API */ = {
-			isa = PBXGroup;
-			children = (
-				F4E7243E23D3014F006DBACC /* VKApi.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		F4F0EF51235A41C7003410B9 = {
@@ -370,10 +388,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F417B189246472FA00A067EF /* ParseData.swift in Sources */,
 				F41494772389D21E005C55E3 /* LoadView.swift in Sources */,
 				F49374AA236386D30056C8F3 /* GroupCell.swift in Sources */,
 				F421679E23DDF6A100F600D3 /* UserRepository.swift in Sources */,
 				F446D58723713ADF00A1EE56 /* LikeControl.swift in Sources */,
+				F487D0A2246AC32700AAECB4 /* Promise.swift in Sources */,
 				F4BFE28C23D376A2002D27AD /* User.swift in Sources */,
 				F40A809B23E1FBF500C17708 /* GroupRepository.swift in Sources */,
 				F429DA09236626010020B95A /* MyFriendProfileController.swift in Sources */,
@@ -381,7 +401,7 @@
 				F43EC11123D37068002267B8 /* GroupsRealm.swift in Sources */,
 				F49374AE236388C20056C8F3 /* AllGroupsController.swift in Sources */,
 				F460871D23871125006C40F1 /* NewsViewCell.swift in Sources */,
-				F4E7243F23D3014F006DBACC /* VKApi.swift in Sources */,
+				F4E7243F23D3014F006DBACC /* VKAPI.swift in Sources */,
 				F41494792389D380005C55E3 /* AnimationLoadViewController.swift in Sources */,
 				F49374A42363681C0056C8F3 /* FriendsController.swift in Sources */,
 				B0594AD123FB0BFF00F2C4E6 /* NewsItem.swift in Sources */,
@@ -391,9 +411,13 @@
 				F4F0EF62235A41C7003410B9 /* LoginController.swift in Sources */,
 				F429DA0B2366271B0020B95A /* FriendProfileCell.swift in Sources */,
 				F49374A2236367DB0056C8F3 /* MyGroupsController.swift in Sources */,
+				F452A093246C26E70097AD8C /* PhotoService.swift in Sources */,
 				F4F0EF5E235A41C7003410B9 /* AppDelegate.swift in Sources */,
 				F4F0EF60235A41C7003410B9 /* SceneDelegate.swift in Sources */,
+				F417B18B246477B700A067EF /* ReloadTableController.swift in Sources */,
 				F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */,
+				F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */,
+				F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */,
 				F4B0BD1023CA51040031A10D /* Session.swift in Sources */,
 				F460871B23870FD0006C40F1 /* NewsViewController.swift in Sources */,
 				F49374A8236379670056C8F3 /* Friend.swift in Sources */,

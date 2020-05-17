@@ -12,7 +12,7 @@ import Kingfisher
 
 class MyGroupsController: UITableViewController {
 
-    var myGroups = [GroupsRealm] ()
+    var myGroups = [GroupItem] ()
     var database = GroupRepository()
     
     var groupsResult: Results<GroupsRealm>!
@@ -106,8 +106,6 @@ class MyGroupsController: UITableViewController {
             }
         }
     }
-
-
 }
 
 extension MyGroupsController: UITableViewDataSourcePrefetching {

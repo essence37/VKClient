@@ -52,7 +52,7 @@ class NewsViewController: UITableViewController {
     // Добавление новостей в массив news.
     func addNews() {
         let allNews = self.realm.objects(NewsItem.self)
-        for i in 0...100 {
+        for i in 0..<allNews.count {
             let news = allNews[i]
             self.news.append(news)
         }

@@ -12,8 +12,6 @@ import RealmSwift
 import SwiftyJSON
 
 class VKApi {
-    //
-    var news = [NewsItem]()
     
     enum RequestError: Error {
         case decodableError
@@ -68,6 +66,8 @@ class VKApi {
             "count": 50,
             "fields": "nickname,photo_100"
         ]
+        //
+        var news = [NewsItem]()
         DispatchQueue.global(qos: .utility).async {
             AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON { response in
                 switch response.result {
@@ -75,10 +75,10 @@ class VKApi {
                     let json = JSON(value)
                     //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
                     //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
-                    self.news = json["response"]["items"].arrayValue.map(NewsItem.init)
+                    news = json["response"]["items"].arrayValue.map(NewsItem.init)
                     let realm = try! Realm()
                     try! realm.write {
-                        realm.add(self.news)
+                        realm.add(news)
                     }
                 //                print(realm.configuration.fileURL)
                 case let .failure(error):

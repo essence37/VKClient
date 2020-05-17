@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import RealmSwift
+import Alamofire
 
 class AllGroupsController: UITableViewController {
 
@@ -20,20 +21,33 @@ class AllGroupsController: UITableViewController {
     
     var database = GroupRepository()
     var vkApi = VKApi()
-    var groups = [GroupsRealm]()
-    
-    
-//    let groups = [
-//        Group(image: UIImage(named: "Books&Movies")!, name: "Books&Movies"),
-//        Group(image: UIImage(named: "Science")!, name: "Science"),
-//        Group(image: UIImage(named: "Stand up")!, name: "Stand up"),
-//        Group(image: UIImage(named: "ITNews")!, name: "ITNews"),
-//    ]
+    var groups = [GroupItem]()
+    var filteredGroups = [GroupItem]()
+    let opq = OperationQueue()
+    let parameters: Parameters = [
+        "access_token": Session.instance.token,
+        "v": "5.103",
+        "extended": "1",
+        "fields": "photo_100, name"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
+        
+        let request = AF.request("https://api.vk.com/method/groups.get", method: .get, parameters: parameters)
+        let getDataOperation = GetDataOperation(request: request)
+        opq.addOperation(getDataOperation)
+        
+        let parseData = ParseData()
+        parseData.addDependency(getDataOperation)
+        opq.addOperation(parseData)
+        
+        let reloadTableController = ReloadTableController(controller: self)
+        reloadTableController.addDependency(parseData)
+        OperationQueue.main.addOperation(reloadTableController)
+        
+        // Старый способ получения данных.
+        /*vkApi.loadGroupsData(token: Session.instance.token) { [weak self] (groups: Result<[GroupsRealm], Error>) in
             switch groups {
             case .success(let groups):
                 self?.groups = groups
@@ -41,13 +55,10 @@ class AllGroupsController: UITableViewController {
                 self?.tableView.reloadData()
             case .failure(let error): break
             }
-        }
+        }*/
         
         self.filteredGroups = self.groups
-        
     }
-
-    var filteredGroups = [GroupsRealm]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

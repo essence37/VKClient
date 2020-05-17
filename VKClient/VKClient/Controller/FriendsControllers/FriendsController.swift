@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
 
 class FriendsController: UITableViewController {
     
@@ -23,15 +24,17 @@ class FriendsController: UITableViewController {
     }
     
     var vkApi = VKApi()
+    var promise = Future()
     var database = UserRepository()
     var friends = [User]()
+    lazy var photoCache = PhotoService(container: self.tableView)
     
 //    let friends = UserResponse.toUser.self
     
     var sortedFriends = [Character: [User]]()
     
     override func viewDidLoad() {
-           
+        
         tableView.register(UINib(nibName: "FriendXibCell", bundle: nil), forCellReuseIdentifier: "FriendXibCell")
         
         self.sortedFriends = sort(friends: friends)
@@ -46,6 +49,7 @@ class FriendsController: UITableViewController {
             case .failure(_): break
             }
         }
+        
 
     }
     
@@ -99,8 +103,10 @@ class FriendsController: UITableViewController {
         cell.friendNameLabel.text = friend.lastName
         
         // Отобразить картинку с помощью Kingfisher
-        let url = URL(string: friend.photo)
-        cell.friendImageView.kf.setImage(with: url)
+        /*let url = URL(string: friend.photo)
+          cell.friendImageView.kf.setImage(with: url)*/
+        // Реализация кэширования картинок.
+        cell.friendImageView.image = photoCache.photo(atIndexpath: indexPath, byUrl: friend.photo)
         
         return cell
     }
