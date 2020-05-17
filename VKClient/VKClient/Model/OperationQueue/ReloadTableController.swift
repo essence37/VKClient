@@ -18,6 +18,7 @@ class ReloadTableController: Operation {
     override func main() {
         guard let parseData = dependencies.first as? ParseData else { return }
         controller.groups = parseData.outputData
+        controller.filteredGroups = parseData.outputData
         controller.tableView.reloadData()
     }
 }

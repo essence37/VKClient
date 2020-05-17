@@ -49,9 +49,11 @@ class PhotoService {
     }
     // Словарь с изображениями из файловой системы.
     private var images = [String: UIImage]()
+    // Последовательная очередь.
+    private let syncQueue = DispatchQueue(label: "photo.cache.queue")
     // Метод loadPhoto загружает фото из сети.
     private func loadPhoto(atIndexpath indexPath: IndexPath, byUrl url: String) {
-            AF.request(url).responseData(queue: DispatchQueue.global()) { [weak self] response in
+            AF.request(url).responseData(queue: syncQueue) { [weak self] response in
                 guard
                     let data = response.data,
                     let image = UIImage(data: data) else { return }
