@@ -57,33 +57,42 @@ class VKApi {
         sendRequest(requestURL: vkApiConfigurator("groups.get")!, method: .post, parameters: parameters) { completion($0) }
     }
     // Запрос данных новостей.
-    func loadNewsData(token: String) {
-        let parameters: Parameters = [
+    func loadNewsData(startFrom: String = "", startTime: Double? = nil, token: String, completion: @escaping (Result<[NewsItem], Error>, String) -> Void) {
+        var parameters: Parameters = [
             "access_token": token,
             "v": "5.103",
             "filters": "post",
             "return_banned": 0,
-            "count": 50,
-            "fields": "nickname,photo_100"
+            "count": 20,
+            "fields": "nickname,photo_100",
+            "start_from": startFrom
         ]
-        //
+        if let startTime = startTime {
+            parameters["start_time"] = startTime
+        }
         var news = [NewsItem]()
-        DispatchQueue.global(qos: .utility).async {
-            AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON { response in
-                switch response.result {
-                case let .success(value):
-                    let json = JSON(value)
-                    //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
-                    //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
+        AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON(queue: .global()) { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let nextFrom = json["response"]["next_from"].stringValue
+                let parsingGroup = DispatchGroup()
+                //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
+                //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
+                parsingGroup.notify(queue: .global()) {
                     news = json["response"]["items"].arrayValue.map(NewsItem.init)
                     let realm = try! Realm()
                     try! realm.write {
                         realm.add(news)
                     }
-                //                print(realm.configuration.fileURL)
-                case let .failure(error):
-                    print(error)
+                    DispatchQueue.main.async {
+                        completion(.success(news), nextFrom)
+                    }
                 }
+            //                print(realm.configuration.fileURL)
+            case let .failure(error):
+//                print(error)
+                completion(.failure(error), "")
             }
         }
     }
