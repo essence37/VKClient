@@ -22,6 +22,7 @@ class UserRepository {
                 userRealm.firstName = user.firstName
                 userRealm.lastName = user.lastName
                 userRealm.photo = user.photo
+                userRealm.id = user.id
             }
             
             realm.add(user)

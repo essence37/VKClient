@@ -37,7 +37,6 @@ class Photo: Object {
     @objc dynamic var height: Int = 0
     @objc dynamic var aspectRatio: CGFloat { return CGFloat(height)/CGFloat(width) }
     
-    
     init(json: JSON) {
         self.id = json["photo"]["id"].intValue
         if let urlString = json["photo"]["sizes"].arrayValue.last?["url"].string,

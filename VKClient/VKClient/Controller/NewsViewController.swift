@@ -13,33 +13,29 @@ import Kingfisher
 class NewsViewController: UITableViewController {
     
     @objc func refreshNews() {
-        // Начинаем обновление новостей
+        // Начинаем обновление новостей.
         self.refreshControl?.beginRefreshing()
-        // Определяем время самой свежей новости
-        // или берем текущее время
+        // Определяем время самой свежей новости или берем текущее время.
         let mostFreshNewsDate = self.news.first?.date ?? Date().timeIntervalSince1970
-        // отправляем сетевой запрос загрузки новостей
+        // Отправляем сетевой запрос загрузки новостей.
         self.vkApi.loadNewsData(startTime: mostFreshNewsDate + 1, token: Session.instance.token) { [weak self] (result, startFrom)  in
             switch result {
             case .success(let news):
                 guard let self = self else { return }
-                // выключаем вращающийся индикатор
+                // Выключаем вращающийся индикатор.
                 DispatchQueue.main.async {
                 self.refreshControl?.endRefreshing()
                 }
-                // проверяем, что более свежие новости действительно есть
+                // Проверяем, что более свежие новости действительно есть.
                 guard news.count > 0 else { return }
-                // прикрепляем их в начало отображаемого массива
+                // Прикрепляем их в начало отображаемого массива.
                 self.news = news + self.news
-                // формируем IndexSet свежедобавленных секций и обновляем таблицу
-                //                let indexSet = IndexSet(integersIn: 0..<news.count)
-                //                self.tableView.insertSections(indexSet, with: .automatic)
+                // Обновляем таблицу.
                 self.tableView.reloadData()
             case .failure(_): break
             }
         }
     }
-
 
 // MARK: - Variables And Properties
     // Инициализация класса VKApi.
@@ -50,14 +46,18 @@ class NewsViewController: UITableViewController {
     var news = [NewsItem]()
     // Параметр nextFrom.
     var nextFrom = ""
+    //
     var isLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.prefetchDataSource = self
-        vkApi.loadNewsData(startTime: Date().timeIntervalSince1970, token: Session.instance.token) { _,_  in return }
-        addNews()
+        vkApi.loadNewsData(startTime: Date().timeIntervalSince1970, token: Session.instance.token) { [weak self] _, next in
+            self?.nextFrom = next
+            self?.addNews()
+            self?.tableView.reloadData()
+            }
         setupRefreshControl()
         
     }
@@ -119,75 +119,30 @@ class NewsViewController: UITableViewController {
                 return UITableView.automaticDimension
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension NewsViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        // Выбираем максимальный номер секции, которую нужно будет отобразить в ближайшее время
-        guard let maxSection = indexPaths.map({ $0.section }).max() else { return }
+        // Выбираем максимальный номер ячейки, которую нужно будет отобразить в ближайшее время
+        guard let maxRow = indexPaths.map({ $0.row }).max() else { return }
         // Проверяем,является ли эта секция одной из трех ближайших к концу
-        if maxSection > news.count - 3,
+        if maxRow > news.count - 3,
             // Убеждаемся, что мы уже не в процессе загрузки данных
             !isLoading {
             // Начинаем загрузку данных и меняем флаг isLoading
             isLoading = true
             // Cетевой сервис обрабатывает входящий параметр nextFrom и в качестве результата возвращет nextFrom для будущего запроса.
             vkApi.loadNewsData(startFrom: nextFrom, token: Session.instance.token) { [weak self] (result, nextFrom) in
+                self?.nextFrom = nextFrom
                 switch result {
                 case .success(let news):
                     guard let self = self else { return }
                     // Прикрепляем новости к cуществующим новостям
-                    let indexSet = IndexSet(integersIn: self.news.count ..< self.news.count + news.count)
+                    let indexPaths = (self.news.count ..< self.news.count + news.count).map{ IndexPath(row: $0, section: 0) }
                     self.news.append(contentsOf: news)
-                    // Обновляем таблицу
-                    self.tableView.insertSections(indexSet, with: .automatic)
-                    // Выключаем статус isLoading
+                    // Обновление таблицы.
+                    self.tableView.insertRows(at: indexPaths, with: .automatic)
+                    // Выключение статуса isLoading.
                     self.isLoading = false
                 case .failure(_): break
                 }

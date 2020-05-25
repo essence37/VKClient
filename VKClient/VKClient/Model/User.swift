@@ -56,16 +56,16 @@ class UserData: Decodable {
 
 class User: Object, Decodable {
     
-    
-    
     @objc dynamic var firstName = ""
     @objc dynamic var lastName = ""
     @objc dynamic var photo = ""
+    @objc dynamic var id = ""
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
         case photo = "photo_100"
+        case id = "user_id"
     }
     
     convenience required init (from decoder: Decoder) throws {
@@ -74,6 +74,7 @@ class User: Object, Decodable {
         self.firstName = try values.decode(String.self, forKey: .firstName)
         self.lastName = try values.decode(String.self, forKey: .lastName)
         self.photo = try values.decode(String.self, forKey: .photo)
+        self.id = try values.decode(String.self, forKey: .id)
     }
     
 }

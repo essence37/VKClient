@@ -67,27 +67,23 @@ class VKApi {
             "fields": "nickname,photo_100",
             "start_from": startFrom
         ]
-        if let startTime = startTime {
-            parameters["start_time"] = startTime
-        }
-        var news = [NewsItem]()
+//        if let startTime = startTime {
+//            parameters["start_time"] = startTime
+//        }
         AF.request(self.vkApiConfigurator("newsfeed.get")!, method: .get, parameters: parameters).responseJSON(queue: .global()) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 let nextFrom = json["response"]["next_from"].stringValue
-                let parsingGroup = DispatchGroup()
+                DispatchQueue.main.async {
                 //                let groups = json["response"]["groups"].arrayValue.map(GroupItem.init)
                 //                let profile = json["response"]["profiles"].arrayValue.map(ProfileItems.init)
-                parsingGroup.notify(queue: .global()) {
-                    news = json["response"]["items"].arrayValue.map(NewsItem.init)
+                    let news = json["response"]["items"].arrayValue.map(NewsItem.init)
                     let realm = try! Realm()
                     try! realm.write {
                         realm.add(news)
                     }
-                    DispatchQueue.main.async {
-                        completion(.success(news), nextFrom)
-                    }
+                    completion(.success(news), nextFrom)
                 }
             //                print(realm.configuration.fileURL)
             case let .failure(error):
