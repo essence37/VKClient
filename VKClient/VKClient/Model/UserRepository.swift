@@ -27,6 +27,7 @@ class UserRepository {
             
             realm.add(user)
             print(realm.objects(User.self ))
+//            print(realm.configuration.fileURL)
             try realm.commitWrite()
         } catch {
             print(error)

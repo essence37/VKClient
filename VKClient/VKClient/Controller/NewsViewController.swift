@@ -106,19 +106,19 @@ class NewsViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 2:
-                // Вычисляем высоту
-                let tableWidth = tableView.bounds.width
-                let news = self.news[indexPath.section]
-                let cellHeight = tableWidth * news.photos.first!.aspectRatio
-                return cellHeight
-        default:
-        // Для всех остальных ячеек оставляем автоматически определяемый размер
-                return UITableView.automaticDimension
-        }
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch indexPath.row {
+//        case 2:
+//                // Вычисляем высоту
+//                let tableWidth = tableView.bounds.width
+//                let news = self.news[indexPath.section]
+//                let cellHeight = tableWidth * news.photos.first!.aspectRatio
+//                return cellHeight
+//        default:
+//        // Для всех остальных ячеек оставляем автоматически определяемый размер
+//                return UITableView.automaticDimension
+//        }
+//    }
 }
 
 extension NewsViewController: UITableViewDataSourcePrefetching {

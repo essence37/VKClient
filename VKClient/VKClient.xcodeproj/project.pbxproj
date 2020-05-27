@@ -20,6 +20,7 @@
 		F42AEB6D235E258D00CA08D1 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AEB6C235E258D00CA08D1 /* UIViewController+Extensions.swift */; };
 		F42C4D7724461197006B159D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42C4D7624461197006B159D /* WebKit.framework */; };
 		F43EC11123D37068002267B8 /* GroupsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43EC11023D37068002267B8 /* GroupsRealm.swift */; };
+		F43F5A9D247D809200329848 /* FriendPhotosItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F5A9C247D809200329848 /* FriendPhotosItem.swift */; };
 		F446D58723713ADF00A1EE56 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446D58623713ADF00A1EE56 /* LikeControl.swift */; };
 		F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E504F2379DD800003B96B /* FriendXibCell.swift */; };
 		F44E50522379DD800003B96B /* FriendXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44E50502379DD800003B96B /* FriendXibCell.xib */; };
@@ -64,6 +65,7 @@
 		F42AEB6C235E258D00CA08D1 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F42C4D7624461197006B159D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F43EC11023D37068002267B8 /* GroupsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsRealm.swift; sourceTree = "<group>"; };
+		F43F5A9C247D809200329848 /* FriendPhotosItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosItem.swift; sourceTree = "<group>"; };
 		F446D58623713ADF00A1EE56 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
 		F44E504F2379DD800003B96B /* FriendXibCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendXibCell.swift; sourceTree = "<group>"; };
 		F44E50502379DD800003B96B /* FriendXibCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendXibCell.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				F43EC11023D37068002267B8 /* GroupsRealm.swift */,
 				F421679D23DDF6A100F600D3 /* UserRepository.swift */,
 				F4BFE28B23D376A2002D27AD /* User.swift */,
+				F43F5A9C247D809200329848 /* FriendPhotosItem.swift */,
 				B0594AD023FB0BFF00F2C4E6 /* NewsItem.swift */,
 				F4B0BD0F23CA51040031A10D /* Session.swift */,
 				F4FF3FF823E4ABA700FF2051 /* CommonResponse.swift */,
@@ -412,6 +415,7 @@
 				F4F0EF5E235A41C7003410B9 /* AppDelegate.swift in Sources */,
 				F4F0EF60235A41C7003410B9 /* SceneDelegate.swift in Sources */,
 				F417B18B246477B700A067EF /* ReloadTableController.swift in Sources */,
+				F43F5A9D247D809200329848 /* FriendPhotosItem.swift in Sources */,
 				F44E50512379DD800003B96B /* FriendXibCell.swift in Sources */,
 				F47EE1BF24574C40000E3E29 /* AsyncOperation.swift in Sources */,
 				F47EE1C124575D34000E3E29 /* GetDataOperation.swift in Sources */,
