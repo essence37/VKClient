@@ -22,10 +22,12 @@ class UserRepository {
                 userRealm.firstName = user.firstName
                 userRealm.lastName = user.lastName
                 userRealm.photo = user.photo
+                userRealm.id = user.id
             }
             
             realm.add(user)
             print(realm.objects(User.self ))
+//            print(realm.configuration.fileURL)
             try realm.commitWrite()
         } catch {
             print(error)

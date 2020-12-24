@@ -22,17 +22,17 @@ class FriendsController: UITableViewController {
             searchBar.delegate = self
         }
     }
+ 
+    // MARK: - Variables And Properties
     
     var vkApi = VKApi()
     var promise = Future()
     var database = UserRepository()
     var friends = [User]()
     lazy var photoCache = PhotoService(container: self.tableView)
-    
-//    let friends = UserResponse.toUser.self
-    
     var sortedFriends = [Character: [User]]()
     
+//    let friends = UserResponse.toUser.self
     override func viewDidLoad() {
         
         tableView.register(UINib(nibName: "FriendXibCell", bundle: nil), forCellReuseIdentifier: "FriendXibCell")
@@ -110,16 +110,18 @@ class FriendsController: UITableViewController {
         
         return cell
     }
-    /*
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show friend image",
             let destinationVC = segue.destination as? MyFriendProfileController,
             let indexPath = tableView.indexPathForSelectedRow {
-            let friendName = friends[indexPath.row].name
-            destinationVC.title = friendName
+//            let friendName = friends[indexPath.row].name
+//            destinationVC.title = friendName
+            let id = friends[indexPath.row].id
+            destinationVC.friendID = id
         }
     }
- */
+ 
 //    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> user.self {
 //        let firstChar = sortedFriends.keys.sorted()[indexPath.section]
 //        let friends = sortedFriends[firstChar]!
@@ -139,9 +141,9 @@ class FriendsController: UITableViewController {
 //    }
 //
 //
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//         performSegue(withIdentifier: "Show friend image", sender: self)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         performSegue(withIdentifier: "Show friend image", sender: self)
+    }
 }
 
 extension FriendsController: UISearchBarDelegate {
